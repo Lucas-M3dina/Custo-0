@@ -18,7 +18,7 @@ namespace Custo0.Interfaces
         /// Lista todos os produtos da empresa
         /// </summary>
         /// <returns>Uma lista de produtos</returns>
-        List<Produto> ListarInsituicao(int idInsituicao);
+        List<Produto> ListarInstituicao(int idInsituicao);
 
         /// <summary>
         /// Lista todos os produtos da determinada categoria
