@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&family=Titillium+Web&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 300;
+    color: #018A1F;
+    text-transform: uppercase;
+    margin: 15px 0;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 0 50px;
+    justify-content: space-between;
+}
+
+article {
+    border: 1px solid #000000;
+    border-radius: 5px;
+    width: 260px;
+    height: 390px;
+    padding: 30px 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 30px 20px;
+}
+
+article img {
+    height: 160px;
+    overflow: hidden;
+}
+
+article p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    display: inline-block;
+    margin: 20px 0;
+}
+
+article span {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #1E3469;
+    display: inline-block;
+    margin: 0 auto 60px 0;
+    font-weight: bold;
+}
+
+article button {
+    width: 200px;
+    height: 40px;
+    background: #009C54;
+    border: 0;
+    border-radius: 6px;
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+article button img {
+    height: 25px;
+    margin-right: 15px;
+}
