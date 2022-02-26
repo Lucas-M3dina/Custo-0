@@ -29,7 +29,7 @@ section {
     justify-content: space-between;
 }
 
-article {
+.card-article {
     border: 1px solid #000000;
     border-radius: 5px;
     width: 260px;
@@ -43,19 +43,19 @@ article {
     margin: 30px 20px;
 }
 
-article img {
+.card-article img {
     height: 160px;
     overflow: hidden;
 }
 
-article p {
+.card-article p {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     display: inline-block;
     margin: 20px 0;
 }
 
-article span {
+.card-article span {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     color: #1E3469;
@@ -64,21 +64,25 @@ article span {
     font-weight: bold;
 }
 
-article button {
+.card-article button {
     width: 200px;
     height: 40px;
     background: #009C54;
     border: 0;
     border-radius: 6px;
-    font-family: 'Roboto', sans-serif;
-    color: #FFFFFF;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 16px;
 }
 
-article button img {
+
+.card-article button img {
     height: 25px;
     margin-right: 15px;
+}
+
+.card-article button p {
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+    font-size: 16px;
 }
