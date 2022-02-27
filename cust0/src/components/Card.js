@@ -13,8 +13,12 @@ export default class Card extends Component {
           })
         return (
             <article className="card-article">
-                {/* <img src={`data:image;base64,${p.imagem}`} alt="Imagem produto" /> */}
+                                          {/* formato bd */}
+                {/* <img src={`data:image;base64,${p.imagem}`} alt="Imagem produto" />  */}
+
+                       {/* formato mockApi */}
                 <img src={p.imagem} alt="Imagem produto" />
+
                 <p>{p.descricao}</p>
                 <span>{real.format(p.preco)} un.</span>
 
