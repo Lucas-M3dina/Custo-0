@@ -1,6 +1,7 @@
 import "../css/Home.css"
 import Card from "../components/Card"
-import { React, Component } from 'react';
+import { React, Component, useState, useEffect } from 'react';
+import axios from "axios";
 
 var produto = {
     id: 1,
@@ -15,12 +16,32 @@ var produto = {
 
 export default function App() {
 
+    const [listaProdutos, setlistaProdutos] = useState([]);
+
+    function listarProdutos() {
+        axios('https://621bca48768a4e10209ca218.mockapi.io/Produto')
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    console.log(resposta.data)
+                    setlistaProdutos(resposta.data)
+                };
+            })
+            .catch( erro => console.log(erro) );
+    }
+
+    useEffect( listarProdutos, [] );
+
     return (
         <div>
             <div className="container-login">
                 <h1 className="titulo-login">Alimentos</h1>
                 <section className="section-login">
-                    <Card data={produto} />
+                    {
+                        listaProdutos.map(p => 
+                            <Card data={p}
+                        />)
+                    }
+                    
                 </section>
             </div>
         </div>
