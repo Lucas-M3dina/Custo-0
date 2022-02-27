@@ -17,9 +17,9 @@ export default function App() {
 
     return (
         <div>
-            <div className="container">
-                <h1>Alimentos</h1>
-                <section>
+            <div className="container-login">
+                <h1 className="titulo-login">Alimentos</h1>
+                <section className="section-login">
                     <Card data={produto} />
                 </section>
             </div>

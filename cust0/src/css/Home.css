@@ -6,14 +6,14 @@
     box-sizing: border-box;
 }
 
-.container {
+.container-login {
     width: 100vw;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-h1 {
+.titulo-login {
     font-family: 'Titillium Web', sans-serif;
     font-weight: 300;
     color: #018A1F;
@@ -21,7 +21,7 @@ h1 {
     margin: 15px 0;
 }
 
-section {
+.section-login {
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
