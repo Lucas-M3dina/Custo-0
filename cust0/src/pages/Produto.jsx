@@ -1,6 +1,7 @@
 import { React, Component, useState, useEffect } from 'react';
 import axios from 'axios';
 import nullProduct from "../assets/null.png"
+import "../css/Produto.css"
 
 export default function App() {
 
@@ -52,9 +53,11 @@ export default function App() {
 
                         <div className='info-produto'>
                             <span className="produto-titulo">{produto.descricao}</span>
-                            <span className="produto-preco">{real.format(produto.preco)}</span>
+                            <hr />
+                            <span className="produto-preco">{real.format(produto.preco)} un.</span>
+                            <hr />
                             <span className="produto-descricao-t">Descrição:</span>
-                            <p className="produto-descricao">{produto.descricao}</p>
+                            <p className="produto-descricao">{produto.description}</p>
                         </div>
 
                     </section>

@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,100&display=swap');
+
+.produto-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 0;
+}
+
+.produto-section img {
+    height:  380px;
+    width: 450px;
+    /* overflow: hidden; */
+    object-fit: cover;
+}
+
+.info-produto {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto';
+    color: #1E3469;
+    margin-left: 50px;
+}
+
+.info-produto hr {
+    border: 0;
+    border-top: 1px solid #CBC3C3;
+    width: 500px;
+}
+
+.produto-titulo {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.produto-preco {
+    font-size: 42px;
+    margin: 34px 0 18px 0;
+}
+
+.produto-descricao-t {
+    font-size: 25px;
+    margin: 30px 0 20px 0;
+}
+
+.produto-descricao {
+    color: #000;
+    font-size: 18px;
+    font-weight: 100;
+    width: 500px;
+    text-align: justify;
+}
