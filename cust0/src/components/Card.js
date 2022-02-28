@@ -7,11 +7,14 @@ import { Component } from "react"
 
 export default class Card extends Component {
     render() {
-        var p = this.props.data
-        var real = new Intl.NumberFormat([], {
+        
+        const p = this.props.data
+        
+        const real = new Intl.NumberFormat([], {
             style: 'currency',
             currency: 'BRL'
         })
+
         return (
             <article className="card-article">
 
