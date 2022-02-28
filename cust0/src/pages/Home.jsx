@@ -5,14 +5,25 @@ import axios from "axios";
 
 export default function App() {
 
-    const [listaProdutos, setlistaProdutos] = useState([]);
+    var produto = {
+        id: 0,
+        idTipoProduto: 0,
+        idInstituicao: 0,
+        preco: 0,
+        quantidade: 0,
+        descricao: '',
+        imagem: '',
+        dataValidade: new Date(),
+    }
+
+    const [listaProdutos, setlistaProdutos] = useState(produto);
     const [campoBusca, setCampoBusca] = useState('');
 
     function salvarProdutos() {
         axios('https://621bca48768a4e10209ca218.mockapi.io/Produto')
             .then(resposta => {
                 if (resposta.status === 200) {
-                    console.log(resposta.data)
+                    // console.log(resposta.data)
                     setlistaProdutos(resposta.data)
                 };
             })
@@ -21,8 +32,8 @@ export default function App() {
 
     function listarProdutos() {
         var r = new RegExp(campoBusca.toLowerCase(), "g")
-            
-        return(
+
+        return (
             listaProdutos.map(p =>
                 r.test(p.descricao.toLowerCase()) ?
                     <Card data={p} /> : null
@@ -43,9 +54,9 @@ export default function App() {
                 <input type="text" value={campoBusca} onChange={onChange} />
                 <section className="section-login">
                     {
-                        
+
                         listarProdutos()
-                        
+
                     }
                 </section>
                 <script>

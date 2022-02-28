@@ -1,13 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Route, BrowserRouter as Router, Redirect, Switch } from 'react-router-dom';
 import './index.css';
 import Home from './pages/Home';
+import Produto from './pages/Produto';
 import reportWebVitals from './reportWebVitals';
 
+const routing = (
+  <Router>
+    <div>
+      <Switch>
+        <Route exact path="/" component={Home}></Route>
+        <Route path="/produto" component={Produto}></Route>
+      </Switch>
+    </div>
+  </Router>
+)
+
 ReactDOM.render(
-  <React.StrictMode>
-    <Home/>
-  </React.StrictMode>,
+  routing,
   document.getElementById('root')
 );
 
