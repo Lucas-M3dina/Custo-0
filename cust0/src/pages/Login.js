@@ -16,7 +16,7 @@ export default function Login() {
 
     const hisotry = useHistory();
 
-    function Login(event) {
+    function Logar(event) {
         event.preventDefault();
 
         setErroMessage('');

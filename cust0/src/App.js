@@ -2,11 +2,14 @@ import './App.css';
 
 //Pages
 import Login from './pages/Login'
+import Reservas from './pages/Reservas'
 
 function App() {
   return (
       <div>
-        <Login></Login>
+        <Reservas>
+          
+        </Reservas>
       </div>
   );
 }

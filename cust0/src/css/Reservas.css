@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Titillium+Web&display=swap');
+
+.grid {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.rsv_title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 56px;
+
+    color: #018A1F;
+}
+
+.rsv_card {
+    border: 2px solid black;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    margin-bottom: 40px;
+    height: 150px;
+
+}
+
+.rsv_preco {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 38px;
+    line-height: 56px;
+
+    color: #1E3469;
+}
+
+.rsv_btn_shop {
+    background: #000000;
+    border-radius: 13px;
+
+    width: 100px;
+    height: 30px;
+
+    color: white;
+}
+
+.rsv_btn_shop:hover {
+    cursor: pointer;
+}
+
+.rsv_container_img {
+    display: flex;
+    align-items: center;
+}
+
+.rsv_img_card {
+   width: 140px;
+   margin-right: 40px;
+}
+
+.rsv_container_qntd {
+    border: 2px solid black;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 50px;
+    width: 60px
+}
+
+@media (max-width: 750px) {
+    .rsv_card{
+        flex-direction: column;
+        height: 300px;
+    }
+
+    .rsv_preco {
+        font-size: 30px;
+    }
+}
