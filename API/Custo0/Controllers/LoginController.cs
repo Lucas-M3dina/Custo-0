@@ -60,6 +60,10 @@ namespace Custo0.Controllers
                 var minhasClaims = new[]
                 {
                     new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email),
+                    new Claim(ClaimTypes.Role, usuarioBuscado.IdTipoUsuario.ToString()),
+                    new Claim("role", usuarioBuscado.IdTipoUsuario.ToString()),
+                    new Claim("IdUsuario", usuarioBuscado.IdUsuario.ToString()),
+
                 };
 
                 var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("custo0-chave-autenticacao"));
