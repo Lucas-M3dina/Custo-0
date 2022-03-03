@@ -19,11 +19,11 @@ namespace Custo0.Repositories
         {
             Produto produtoBuscado = BuscarPorId(id);
 
-            if (produtoAtualizado.Preco != null)
+            if (produtoAtualizado.Preco != 0)
             {
                 produtoBuscado.Preco = produtoAtualizado.Preco;
             }
-            if (produtoAtualizado.Quantidade != null)
+            if (produtoAtualizado.Quantidade != 0)
             {
                 produtoBuscado.Quantidade = produtoAtualizado.Quantidade;
             }
