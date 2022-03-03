@@ -11,7 +11,7 @@ namespace Custo0.Repositories
 {
     public class ClienteRepository : IClienteRepository
     {
-        Cust0Context ctx = new Cust0Context();
+        private readonly Cust0Context ctx = new();
 
         public void Atualizar(int id, Cliente clienteAtualizado)
         {

@@ -1,9 +1,11 @@
 ﻿using Custo0.Contexts;
 using Custo0.Domains;
 using Custo0.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,7 +13,7 @@ namespace Custo0.Repositories
 {
     public class EmpresaRepository : IEmpresaRepository
     {
-        Cust0Context ctx = new Cust0Context();
+        private readonly Cust0Context ctx = new();
 
         public void Atualizar(int id, Empresa empresaAtualizado)
         {
@@ -62,6 +64,51 @@ namespace Custo0.Repositories
         public List<Empresa> Listar()
         {
             return ctx.Empresas.Include(C => C.IdEnderecoNavigation).ToList();
+        }
+
+        public void SalvarPerfilDir(IFormFile foto, int id_empresa)
+        {
+
+            string nome_novo = id_empresa.ToString() + ".png";
+            string caminho = "Assets/perfil/" + nome_novo;
+
+
+            using (var stream = new FileStream(Path.Combine(caminho), FileMode.Create))
+            {
+                foto.CopyTo(stream);
+            }
+
+            Empresa empresaAtualizado = new();
+
+            Empresa empresaBuscado = BuscarPorId(id_empresa);
+
+
+            if (empresaAtualizado.ImagemEmpresa != null)
+            {
+                empresaBuscado.ImagemEmpresa = empresaAtualizado.ImagemEmpresa;
+            }
+
+
+            ctx.Empresas.Update(empresaBuscado);
+
+            ctx.SaveChanges();
+        }
+
+        public string ConsultarPerfilDir(int id_usuario)
+        {
+            string nome_novo = id_usuario.ToString() + ".png";
+            string caminho = Path.Combine("Assets/perfil", nome_novo);
+
+            if (File.Exists(caminho))
+            {
+
+                byte[] bytesArquivo = File.ReadAllBytes(caminho);
+
+                return Convert.ToBase64String(bytesArquivo);
+            }
+
+            return null;
+
         }
     }
 }

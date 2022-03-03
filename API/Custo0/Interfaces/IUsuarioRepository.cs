@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Custo0.Interfaces
 {
-    interface IUsuarioRepository
+    public interface IUsuarioRepository
     {
         /// <summary>
         /// Valida o usuário

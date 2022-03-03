@@ -11,7 +11,7 @@ namespace Custo0.Repositories
 {
     public class ReservaRepository : IReservaRepository
     {
-        Cust0Context ctx = new Cust0Context();
+        private readonly Cust0Context ctx = new();
 
         public Reserva BuscarPorId(int id)
         {
