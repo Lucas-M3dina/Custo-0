@@ -84,3 +84,10 @@
     height: 25px;
     margin-right: 15px;
 }
+
+@media (max-width: 699px) {
+    .section-login {
+        justify-content: center;
+        padding: 0;
+    }
+}
