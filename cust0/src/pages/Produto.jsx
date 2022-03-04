@@ -11,7 +11,14 @@ export default function App() {
 
     const [produto, setProduto] = useState({});
     const [qntade, setQntade] = useState(1);
+
     const [showModal, setShowModal] = useState(false);
+    const [tipo, setTipo] = useState(0);
+    const [preco, setPreco] = useState(0);
+    const [estoque, setEstoque] = useState(0);
+    const [img, setImg] = useState('');
+    const [descricao, setDescricao] = useState('');
+
 
     const real = new Intl.NumberFormat([], {
         style: 'currency',
@@ -37,7 +44,11 @@ export default function App() {
         axios.post('', qntade, produto.id)
     }
 
-    function funcoes() {
+    function onChange(event) {
+        setQntade(event.target.value)
+    }
+
+    function productTools() {
         return (
             <div className='produto-functions'>
                 <img id="edit" onClick={abrirForm} src={edit} alt="Editar" />
@@ -46,8 +57,54 @@ export default function App() {
         )
     }
 
-    function onChange(event) {
-        setQntade(event.target.value)
+    function editarModal() {
+        if (showModal == true) {
+            return(
+                <div className="fundo-pp" onClick={fecharForm}>
+                            <div className="fechar"></div>
+                            <form action="" onClick={stopPropagation} >
+                                <h2>Editar Produto</h2>
+
+
+                                <div>
+                                    <span>Tipo de produto</span>
+                                    <select name="" value={tipo} onChange={ (c) => setTipo(c.target.value) } id="">
+                                        <option value={1}>Limpeza e Higiene</option>
+                                        <option value={2}>Alimentação</option>
+                                        <option value={3}>Lazer</option>
+                                        <option value={4}>Eletrônicos</option>
+                                        <option value={5}>Eletrodomésticos</option>
+                                        <option value={6}>Estética</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <span>Preço(R$)</span>
+                                    <input type="number" onChange={ (c) => setPreco(c.target.value) } name="" value={preco} id="" />
+                                </div>
+
+                                <div>
+                                    <span>Estoque</span>
+                                    <input type="number" onChange={ (c) => setEstoque(c.target.value) } name="" value={estoque} id="" />
+                                </div>
+
+                                <div>
+                                    <span>Imagem</span>
+                                    <input type="file" name="" id="" />
+                                </div>
+
+                                <div>
+                                    <span>Descrição</span>
+                                    <input className="input-descricao-pp" onChange={ (c) => setDescricao(c.target.value) } type="text" value={descricao} name="" id="" />
+                                </div>
+
+
+                                <button type="submit">Enviar</button>
+                            </form>
+                        </div>
+            )
+        } return(null)
+        
     }
 
     function telaProduto() {
@@ -74,7 +131,7 @@ export default function App() {
                 </form>
 
                 <div className='info-produto'>
-                    {funcoes()}
+                    { productTools() }
                     <span className="produto-titulo">{produto.descricao}</span>
                     <hr />
                     <span className="produto-preco">{real.format(produto.preco)} un.</span>
@@ -82,49 +139,8 @@ export default function App() {
                     <span className="produto-descricao-t">Descrição:</span>
                     <p className="produto-descricao">{produto.description}</p>
                 </div>
-                {
-                    showModal == true ?
-                    <div className="fundo-pp" onClick={fecharForm}>
-                        <div className="fechar"></div>
-                        <form action="" onClick="stopPropagation">
-                            <h2>Editar Produto</h2>
-
-
-                            <div>
-                                <span>Tipo de produto</span>
-                                <select name="" id="">
-                                    <option value="">1</option>
-                                    <option value="">2</option>
-                                    <option value="">3</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <span>Preço(R$)</span>
-                                <input type="number" name="" id="" />
-                            </div>
-
-                            <div>
-                                <span>Estoque</span>
-                                <input type="number" name="" id="" />
-                            </div>
-
-                            <div>
-                                <span>Imagem</span>
-                                <input type="file" name="" id="" />
-                            </div>
-
-                            <div>
-                                <span>Descrição</span>
-                                <input className="input-descricao-pp" type="text" name="" id="" />
-                            </div>
-
-
-                            <button type="submit">Enviar</button>
-                        </form>
-                    </div> : null
-                }
-
+                
+                { editarModal() }
             </section>
         )
     }
@@ -136,12 +152,9 @@ export default function App() {
         setShowModal(true)
     }
 
-    // span.onclick = function () {
-    //     modal.style.display = "none";
-    // }
-
     function fecharForm() {
         setShowModal(false)
+        console.log(`tipo: ${tipo}, preço: ${preco}, descricao: ${descricao}, qntade: ${estoque}`)
     }
 
     function stopPropagation(event) {
