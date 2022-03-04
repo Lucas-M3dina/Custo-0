@@ -33,11 +33,8 @@ namespace Custo0.Contexts
         {
             if (!optionsBuilder.IsConfigured)
             {
-                // Medina Senai
-                // optionsBuilder.UseSqlServer("Data Source=NOTE0113G2\\SQLEXPRESS; initial catalog=Custo; user Id=sa; pwd=Senai@132;");
-
-                // Medina Casa
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-0BA1Q0M\\SQLEXPRESS; initial catalog=Custo; user Id=sa; pwd=Senai@132;");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-0BA1Q0M\\SQLEXPRESS; initial catalog=custo; user Id=sa; pwd=Senai@132;");
             }
         }
 
@@ -48,7 +45,7 @@ namespace Custo0.Contexts
             modelBuilder.Entity<Cliente>(entity =>
             {
                 entity.HasKey(e => e.IdCliente)
-                    .HasName("PK__Cliente__885457EE54E90912");
+                    .HasName("PK__Cliente__885457EEB6B3D993");
 
                 entity.ToTable("Cliente");
 
@@ -56,7 +53,7 @@ namespace Custo0.Contexts
 
                 entity.Property(e => e.Documento)
                     .IsRequired()
-                    .HasMaxLength(13)
+                    .HasMaxLength(24)
                     .IsUnicode(false)
                     .HasColumnName("documento");
 
@@ -84,7 +81,7 @@ namespace Custo0.Contexts
             modelBuilder.Entity<Empresa>(entity =>
             {
                 entity.HasKey(e => e.IdEmpresa)
-                    .HasName("PK__Empresa__75D2CED4A6CEF6BE");
+                    .HasName("PK__Empresa__75D2CED4FC7D9C06");
 
                 entity.ToTable("Empresa");
 
@@ -92,7 +89,7 @@ namespace Custo0.Contexts
 
                 entity.Property(e => e.Cnpj)
                     .IsRequired()
-                    .HasMaxLength(13)
+                    .HasMaxLength(24)
                     .IsUnicode(false)
                     .HasColumnName("cnpj");
 
@@ -125,7 +122,7 @@ namespace Custo0.Contexts
             modelBuilder.Entity<Endereco>(entity =>
             {
                 entity.HasKey(e => e.IdEndereco)
-                    .HasName("PK__Endereco__E45B8B271AD75698");
+                    .HasName("PK__Endereco__E45B8B2781E97B24");
 
                 entity.ToTable("Endereco");
 
@@ -154,7 +151,7 @@ namespace Custo0.Contexts
             modelBuilder.Entity<Estado>(entity =>
             {
                 entity.HasKey(e => e.IdEstado)
-                    .HasName("PK__Estado__62EA894A7F4B5B99");
+                    .HasName("PK__Estado__62EA894A496F85D8");
 
                 entity.ToTable("Estado");
 
@@ -172,14 +169,14 @@ namespace Custo0.Contexts
             modelBuilder.Entity<Produto>(entity =>
             {
                 entity.HasKey(e => e.IdProduto)
-                    .HasName("PK__Produto__5EEDF7C36C16EE25");
+                    .HasName("PK__Produto__5EEDF7C383F8FCD4");
 
                 entity.ToTable("Produto");
 
                 entity.Property(e => e.IdProduto).HasColumnName("idProduto");
 
                 entity.Property(e => e.DataValidade)
-                    .HasColumnType("datetime")
+                    .HasColumnType("smalldatetime")
                     .HasColumnName("dataValidade");
 
                 entity.Property(e => e.Descricao)
@@ -199,9 +196,13 @@ namespace Custo0.Contexts
 
                 entity.Property(e => e.Preco).HasColumnName("preco");
 
-                entity.Property(e => e.Promocao).HasColumnName("promocao");
-
                 entity.Property(e => e.Quantidade).HasColumnName("quantidade");
+
+                entity.Property(e => e.Titulo)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("titulo");
 
                 entity.HasOne(d => d.IdEmpresaNavigation)
                     .WithMany(p => p.Produtos)
@@ -217,21 +218,15 @@ namespace Custo0.Contexts
             modelBuilder.Entity<Reserva>(entity =>
             {
                 entity.HasKey(e => e.IdReserva)
-                    .HasName("PK__Reserva__94D104C89B85ED27");
+                    .HasName("PK__Reserva__94D104C8DB30B548");
 
                 entity.ToTable("Reserva");
 
                 entity.Property(e => e.IdReserva).HasColumnName("idReserva");
 
                 entity.Property(e => e.DataSolicitacao)
-                    .HasColumnType("datetime")
+                    .HasColumnType("smalldatetime")
                     .HasColumnName("dataSolicitacao");
-
-                entity.Property(e => e.Descricao)
-                    .IsRequired()
-                    .HasMaxLength(470)
-                    .IsUnicode(false)
-                    .HasColumnName("descricao");
 
                 entity.Property(e => e.IdCliente).HasColumnName("idCliente");
 
@@ -240,6 +235,10 @@ namespace Custo0.Contexts
                 entity.Property(e => e.IdProduto).HasColumnName("idProduto");
 
                 entity.Property(e => e.IdSituacao).HasColumnName("idSituacao");
+
+                entity.Property(e => e.Preco).HasColumnName("preco");
+
+                entity.Property(e => e.Quantidade).HasColumnName("quantidade");
 
                 entity.HasOne(d => d.IdClienteNavigation)
                     .WithMany(p => p.Reservas)
@@ -265,7 +264,7 @@ namespace Custo0.Contexts
             modelBuilder.Entity<SituacaoReserva>(entity =>
             {
                 entity.HasKey(e => e.IdSituacaoReserva)
-                    .HasName("PK__situacao__4F2B94CA4665E678");
+                    .HasName("PK__situacao__4F2B94CA508A365C");
 
                 entity.ToTable("situacaoReserva");
 
@@ -282,7 +281,7 @@ namespace Custo0.Contexts
             modelBuilder.Entity<TipoProduto>(entity =>
             {
                 entity.HasKey(e => e.IdTipoProduto)
-                    .HasName("PK__tipoProd__DE38B032A2375762");
+                    .HasName("PK__tipoProd__DE38B032918D2181");
 
                 entity.ToTable("tipoProduto");
 
@@ -300,7 +299,7 @@ namespace Custo0.Contexts
             modelBuilder.Entity<TipoUsuario>(entity =>
             {
                 entity.HasKey(e => e.IdTipoUsuario)
-                    .HasName("PK__tipoUsua__03006BFFDFB4BFD9");
+                    .HasName("PK__tipoUsua__03006BFF6BF3B61D");
 
                 entity.ToTable("tipoUsuario");
 
@@ -318,7 +317,7 @@ namespace Custo0.Contexts
             modelBuilder.Entity<Usuario>(entity =>
             {
                 entity.HasKey(e => e.IdUsuario)
-                    .HasName("PK__Usuario__645723A621F8CE44");
+                    .HasName("PK__Usuario__645723A6A836537C");
 
                 entity.ToTable("Usuario");
 

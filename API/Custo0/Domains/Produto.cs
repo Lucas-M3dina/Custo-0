@@ -15,9 +15,9 @@ namespace Custo0.Domains
         public int IdProduto { get; set; }
         public byte? IdTipoProduto { get; set; }
         public short? IdEmpresa { get; set; }
-        public int Preco { get; set; }
+        public double Preco { get; set; }
         public int Quantidade { get; set; }
-        public byte? Promocao { get; set; }
+        public string Titulo { get; set; }
         public string Descricao { get; set; }
         public string ImagemProduto { get; set; }
         public DateTime? DataValidade { get; set; }

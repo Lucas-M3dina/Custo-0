@@ -1,7 +1,7 @@
 CREATE DATABASE Custo
 GO
 
-USE DATABASE Custo;
+USE Custo;
 GO
 
 CREATE TABLE tipoUsuario(

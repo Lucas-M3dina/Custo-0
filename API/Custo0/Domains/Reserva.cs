@@ -12,7 +12,8 @@ namespace Custo0.Domains
         public int? IdProduto { get; set; }
         public short? IdEmpresa { get; set; }
         public int? IdCliente { get; set; }
-        public string Descricao { get; set; }
+        public int? Quantidade { get; set; }
+        public double? Preco { get; set; }
         public DateTime? DataSolicitacao { get; set; }
 
         public virtual Cliente IdClienteNavigation { get; set; }
