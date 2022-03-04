@@ -57,6 +57,16 @@
     margin-left: 50px;
 }
 
+.produto-functions {
+    display: flex;
+    justify-content: end;
+}
+
+.produto-functions img {
+    width: 0 30px;
+    margin: 10px;
+}
+
 .info-produto hr {
     border: 0;
     border-top: 1px solid #CBC3C3;
@@ -84,4 +94,68 @@
     font-weight: 100;
     width: 500px;
     text-align: justify;
+}
+
+.fundo-pp {
+    display: flex; /* Hidden by default */
+    align-items: center;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.fundo-pp form {
+    background-color: #FFFFFF;
+    width: 40%;
+    margin-left: 30%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+}
+
+.fundo-pp h2 {
+    margin-bottom: 15px;
+}
+
+.fundo-pp div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.fundo-pp span {
+    margin-bottom: 3px;
+}
+
+.fundo-pp select, input {
+    width: 30vw;
+    height: 30px;
+}
+
+.input-descricao-pp {
+    height: 100px;
+}
+
+.fundo-pp button {
+    background-color: #61BB6A;
+    border: 0;
+    border-radius: 5px;
+    height: 40px;
+    width: 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 20px 0 0 0;
 }
