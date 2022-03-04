@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.cadastro_container {
+    background-image: url('../assets/loginBackGround.png');
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: 100% 100%;
+}
+
+.cdst_main {
+    background: linear-gradient(0deg, rgba(33, 22, 22, 0.58), rgba(33, 22, 22, 0.58));
+    border-radius: 16px;
+    min-width: 250px;
+    width: 40%;
+    height: 85%;
+    min-height: 500px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    transition: width 0.6s ease-in-out;
+}
+
+.cdst_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.cdst_h1 {
+    font-family: 'Titillium Web', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 85px;
+    line-height: 134px;
+    margin: 0;
+    
+    color: #FFFFFF;
+}
+
+.cdst_btns_container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 710px;
+}
+
+.cdst_btn_form_change {
+    background: #EEF086;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border: 0;
+
+    width: 30%;
+    height: 44.74px;
+
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 40px;
+    text-transform: uppercase;
+    transition: background 0.6s ease;
+
+    margin-bottom: 50px;
+}
+
+.cdst_btn_form_change:hover{
+    cursor: pointer;
+    background: #c9ca66;
+}
