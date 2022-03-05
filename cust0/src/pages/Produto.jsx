@@ -41,7 +41,14 @@ export default function App() {
 
     function postarReserva(event) {
         event.preventDefault()
-        axios.post('', qntade, produto.id)
+        console.log("reserva efetuada!")
+        // axios.post('', qntade, produto.id)
+    }
+
+    function editarProduto(event) {
+        event.preventDefault()
+        console.log('editado.')
+        setShowModal(false)
     }
 
     function onChange(event) {
@@ -57,68 +64,70 @@ export default function App() {
         )
     }
 
-    function editarModal() {
+    function formEditar() {
         if (showModal == true) {
-            return(
+            return (
                 <div className="fundo-pp" onClick={fecharForm}>
-                            <div className="fechar"></div>
-                            <form action="" onClick={stopPropagation} >
-                                <h2>Editar Produto</h2>
+                    <div className="fechar"></div>
+                    <form
+                        onSubmit={editarProduto}
+                        onClick={stopPropagation}
+                    >
+                        <h2>Editar Produto</h2>
 
 
-                                <div>
-                                    <span>Tipo de produto</span>
-                                    <select name="" value={tipo} onChange={ (c) => setTipo(c.target.value) } id="">
-                                        <option value={1}>Limpeza e Higiene</option>
-                                        <option value={2}>Alimentação</option>
-                                        <option value={3}>Lazer</option>
-                                        <option value={4}>Eletrônicos</option>
-                                        <option value={5}>Eletrodomésticos</option>
-                                        <option value={6}>Estética</option>
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <span>Preço(R$)</span>
-                                    <input type="number" onChange={ (c) => setPreco(c.target.value) } name="" value={preco} id="" />
-                                </div>
-
-                                <div>
-                                    <span>Estoque</span>
-                                    <input type="number" onChange={ (c) => setEstoque(c.target.value) } name="" value={estoque} id="" />
-                                </div>
-
-                                <div>
-                                    <span>Imagem</span>
-                                    <input type="file" name="" id="" />
-                                </div>
-
-                                <div>
-                                    <span>Descrição</span>
-                                    <input className="input-descricao-pp" onChange={ (c) => setDescricao(c.target.value) } type="text" value={descricao} name="" id="" />
-                                </div>
-
-
-                                <button type="submit">Enviar</button>
-                            </form>
+                        <div>
+                            <span>Tipo de produto</span>
+                            <select name="" value={tipo} onChange={(c) => setTipo(c.target.value)} id="">
+                                <option value={1}>Limpeza e Higiene</option>
+                                <option value={2}>Alimentação</option>
+                                <option value={3}>Lazer</option>
+                                <option value={4}>Eletrônicos</option>
+                                <option value={5}>Eletrodomésticos</option>
+                                <option value={6}>Estética</option>
+                            </select>
                         </div>
+
+                        <div>
+                            <span>Preço(R$)</span>
+                            <input type="number" onChange={(c) => setPreco(c.target.value)} name="" value={preco} id="" />
+                        </div>
+
+                        <div>
+                            <span>Estoque</span>
+                            <input type="number" onChange={(c) => setEstoque(c.target.value)} name="" value={estoque} id="" />
+                        </div>
+
+                        <div>
+                            <span>Imagem</span>
+                            <input type="file" name="" id="" />
+                        </div>
+
+                        <div>
+                            <span>Descrição</span>
+                            <textarea className="input-descricao-pp" onChange={(c) => setDescricao(c.target.value)} type="" value={descricao} name="" id="" />
+                        </div>
+
+                        <button type="submit">Enviar</button>
+                    </form>
+                </div>
             )
-        } return(null)
-        
+        } return (null)
+
     }
 
     function telaProduto() {
         return (
-            <section onSubmit={postarReserva} className='produto-section'>
+            <section className='produto-section'>
 
-                <form className='reservar-produto'>
+                <form className='reservar-produto' onSubmit={postarReserva}>
                     {
-                        produto.imagem != null ?
+                        produto.imagemProduto != null ?
                             /// formato bd
                             // <img src={`data:image;base64,${p.imagem}`} alt="Imagem produto" /> :
 
                             /// formato mock
-                            <img src={produto.imagem} alt="Imagem produto" /> :
+                            <img src={produto.imagemProduto} alt="Imagem produto" /> :
 
                             <img src={nullProduct} alt="Imagem produto" />
                     }
@@ -131,16 +140,16 @@ export default function App() {
                 </form>
 
                 <div className='info-produto'>
-                    { productTools() }
-                    <span className="produto-titulo">{produto.descricao}</span>
+                    {productTools()}
+                    <span className="produto-titulo">{produto.titulo}</span>
                     <hr />
                     <span className="produto-preco">{real.format(produto.preco)} un.</span>
                     <hr />
                     <span className="produto-descricao-t">Descrição:</span>
-                    <p className="produto-descricao">{produto.description}</p>
+                    <p className="produto-descricao">{produto.descricao}</p>
                 </div>
-                
-                { editarModal() }
+
+                {formEditar()}
             </section>
         )
     }
@@ -149,12 +158,17 @@ export default function App() {
     var btn = document.getElementById("edit");
 
     function abrirForm() {
+        console.log(produto)
+        setTipo(produto.idTipoProduto)
+        setPreco(produto.preco)
+        setEstoque(produto.quantidade)
+        setImg(produto.imagemProduto)
+        setDescricao(produto.descricao)
         setShowModal(true)
     }
 
     function fecharForm() {
         setShowModal(false)
-        console.log(`tipo: ${tipo}, preço: ${preco}, descricao: ${descricao}, qntade: ${estoque}`)
     }
 
     function stopPropagation(event) {

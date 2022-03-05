@@ -20,17 +20,17 @@ export default class Card extends Component {
             <article className="card-article">
 
                 {
-                    p.imagem != null ?
+                    p.imagemProduto != null ?
                         /// formato bd
                         // <img src={`data:image;base64,${p.imagem}`} alt="Imagem produto" /> :
 
                         /// formato mock
-                        <img src={p.imagem} alt="Imagem produto" /> :
+                        <img src={p.imagemProduto} alt="Imagem produto" /> :
 
                         <img src={nullProduct} alt="Imagem produto" />
                 }
 
-                <p>{p.descricao}</p>
+                <p>{p.titulo}</p>
                 <span>{real.format(p.preco)} un.</span>
 
                 <Link to={"/produto/" + p.id}>

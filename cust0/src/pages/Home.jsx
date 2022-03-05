@@ -43,16 +43,9 @@ export default function App() {
                 <input type="text" value={campoBusca} onChange={onChange} />
                 <section className="section-login">
                     {
-                        
                         listarProdutos()
-                        
                     }
                 </section>
-                <script>
-                    {
-
-                    }
-                </script>
             </div>
         </div>
     )
