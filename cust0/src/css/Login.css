@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Titillium+Web&display=swap');
 
-.container {
+.lgn_container {
     background-image: url("../assets/loginBackGround.png");
     background-size: 100% 100%;
     height: 100vh;
 }
 
-main {
+.lgn_main {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,16 +15,18 @@ main {
     height: 100%;
 }
 
-.background_main {
+.lgn_background_main {
     background: linear-gradient(0deg, rgba(33, 22, 22, 0.58), rgba(33, 22, 22, 0.58));
     border-radius: 16px;    
 
     min-width: 250px;
     width: 40%;
-    height: 600px;
+    height: 75%;
+
+    min-height: 350px;
 }
 
-.container_form {
+.lgn_container_form {
     height: 100%;
     display: flex;
     align-items: center;
@@ -32,7 +34,7 @@ main {
     flex-direction: column;
 }
 
-.login_text {
+.lgn_login_text {
     font-family: 'Titillium Web', sans-serif;
     font-style: normal;
     font-weight: bold;
@@ -45,7 +47,7 @@ main {
     text-transform: uppercase;
 }
 
-.form_login{
+.lgn_form_login{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -54,7 +56,7 @@ main {
     height: 44%;
 }
 
-input {
+.lgn_input {
     background: #FAF6F6;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
@@ -67,23 +69,34 @@ input {
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 12px;
+    font-size: 15px;
     padding-left: 8px;
     
-    color: #ACACAC;
-}
-
-input:focus{
-    font-size: 15px;
     color: black;
+    border: 0;
 }
 
-.email_input{
+.lgn_input:focus{
+    border: 0;
+    outline: black groove 2px;
+    outline-style: groove;
+}
+
+
+.lgn_input:placeholder-shown{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    padding-left: 8px;
+}
+
+.lgn_email_input{
     margin-bottom: 30px;
 }
 
 
-.forgot_pass {
+.lgn_forgot_pass {
     align-self: flex-start;
     font-size: 14px;
     line-height: 23px;
@@ -92,33 +105,38 @@ input:focus{
     color: #FFFFFF;
 }
 
-.forgot_pass:hover{
+.lgn_forgot_pass:hover{
     cursor: pointer;
 }
 
-.btn_login {  
+.lgn_btn_login {  
     background: #EEF086;
     border-radius: 5px;
     width: 150px;
-    height: 45px;   
+    height: 45px;
+    min-height: 45px;   
 
     margin-top: 40px;
     
 }
 
-.pointer{
+.lgn_pointer{
     cursor: pointer;
 }
 
-.not_allowed:hover {
+.lgn_not_allowed:hover {
     cursor: not-allowed;
 }
 
-.singup {
+.lgn_erromsg{
+    color: red;
+}
+
+.lgn_singup {
     color: white;
 }
 
-.link_signup {
+.lgn_link_signup {
     text-decoration-line: underline;
     color: white;
     margin-left: 2px;
@@ -126,12 +144,12 @@ input:focus{
 
 
 @media (max-width: 1000px) {
-    .background_main{
+    .lgn_background_main{
         width: 60%;
         min-width: 300px;
     }
 
-    .login_text {
+    .lgn_login_text {
         font-size: 70px;
     }
 }

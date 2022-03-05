@@ -16,7 +16,7 @@ export default function Login() {
 
     const hisotry = useHistory();
 
-    function Logar(event) {
+    const Logar = (event) => {
         event.preventDefault();
 
         setErroMessage('');
@@ -29,68 +29,68 @@ export default function Login() {
             email: email,
             senha: senha
         })
-        .then(response => {
-            if (response.status == 200){
-                localStorage.setItem('usuario-login', response.data.token)
+            .then(response => {
+                if (response.status == 200) {
+                    localStorage.setItem('usuario-login', response.data.token)
+
+                    setSenha('')
+
+                    setEmail('')
+
+                    setIsLoading(false)
+
+                    hisotry.push('/produtos')
+                }
+            }).catch(erro => {
+                console.log(erro)
 
                 setSenha('')
 
-                setEmail('')
+                setErroMessage("Email ou senha inválidos")
 
                 setIsLoading(false)
-
-                hisotry.push('/produtos')
-            }
-        }).catch(erro => {
-            console.log(erro)
-    
-            setSenha('')
-    
-            setErroMessage("Email ou senha inválidos")
-    
-            setIsLoading(false)
-          })
+            })
     }
 
     return (
-        <div className='container'>
-            <main>
-                <div className="background_main">
-                    <div className="container_form">
-                        <span className="login_text">Login</span>
-                        <form onSubmit={Logar} className="form_login">
+        <div className='lgn_container'>
+            <main className="lgn_main">
+                <div className="lgn_background_main">
+                    <div className="lgn_container_form">
+                        <span className="lgn_login_text">Login</span>
+                        <form onSubmit={Logar} className="lgn_form_login">
                             <div>
-                                <input 
-                                    onChange={campo => setEmail(campo.target.value)} 
-                                    value={email} 
-                                    placeholder='E-mail' 
-                                    type="text" 
-                                    className="email_input" />
+                                <input
+                                    required
+                                    onChange={campo => setEmail(campo.target.value)}
+                                    value={email}
+                                    placeholder='E-mail'
+                                    type="text"
+                                    className="lgn_email_input lgn_input" />
 
 
-                                <input 
+                                <input
+                                    required
                                     onChange={campo => setSenha(campo.target.value)}
                                     value={senha}
                                     placeholder="Senha"
                                     type="text"
-                                    className="password_input" />
-                              <Router>
-                                    <Link className='forgot_pass' to='/'>Esqueceu a senha?</Link>
-                                </Router>
+                                    className="lgn_input lgn_password_input" />
+                                <Link className='lgn_forgot_pass' to='/'>Esqueceu a senha?</Link>
                             </div>
-                            
-                            <button 
-                            type="submit"
-                            className={isLoading ? 'btn_login not_allowed' : 'btn_login pointer'}
-                            disabled={isLoading ? 'disabled' : ''}
+
+                            <button
+                                type="submit"
+                                className={isLoading ? 'lgn_btn_login lgn_not_allowed' : 'lgn_btn_login lgn_pointer'}
+                                disabled={isLoading ? 'disabled' : ''}
                             >{isLoading ? 'Carregando...' : 'Entrar'}</button>
+
+                            <span className="lgn_erromsg">{erroMessage}</span>
 
 
                         </form>
-                        <span className='singup'>Não tem uma conta?
-                            <Router>
-                                <Link className='link_signup' to='/cadastro'><span className='link_signup' >Cadastre-se</span></Link>
-                            </Router>
+                        <span className='lgn_singup'>Não tem uma conta?
+                            <Link className='lgn_link_signup' to='/cadastro'><span className='link_signup' >Cadastre-se</span></Link>
                         </span>
                     </div>
                 </div>
