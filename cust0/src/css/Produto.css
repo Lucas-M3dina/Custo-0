@@ -143,7 +143,7 @@
     margin-bottom: 3px;
 }
 
-.fundo-pp select, input, textarea {
+.fundo-pp select, .fundo-pp input, .fundo-pp textarea {
     width: 30vw;
     height: 30px;
 }
@@ -177,7 +177,7 @@
         margin-left: 20%;
     }
 
-    .fundo-pp select, input, textarea {
+    .fundo-pp select, .fundo-pp input, .fundo-pp textarea {
         width: 50vw;
     }    
 }
