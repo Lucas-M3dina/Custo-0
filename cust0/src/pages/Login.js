@@ -1,6 +1,6 @@
 import React from "react"
 import { useState, useEffect } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, BrowserRouter as Router } from "react-router-dom";
 import api from "../services/api";
 
 import background from "../assets/loginBackGround.png"
@@ -16,11 +16,14 @@ export default function Login() {
 
     const hisotry = useHistory();
 
-    function Login(event) {
+    function Logar(event) {
         event.preventDefault();
 
         setErroMessage('');
         setIsLoading(true);
+
+        console.log(isLoading)
+        console.log('ola')
 
         api.post('/login', {
             email: email,
@@ -35,6 +38,8 @@ export default function Login() {
                 setEmail('')
 
                 setIsLoading(false)
+
+                hisotry.push('/produtos')
             }
         }).catch(erro => {
             console.log(erro)
@@ -53,7 +58,7 @@ export default function Login() {
                 <div className="background_main">
                     <div className="container_form">
                         <span className="login_text">Login</span>
-                        <from className="form_login">
+                        <form onSubmit={Logar} className="form_login">
                             <div>
                                 <input 
                                     onChange={campo => setEmail(campo.target.value)} 
@@ -69,12 +74,24 @@ export default function Login() {
                                     placeholder="Senha"
                                     type="text"
                                     className="password_input" />
-                                <span className='forgot_pass'>Esqueceu a senha?</span>
+                              <Router>
+                                    <Link className='forgot_pass' to='/'>Esqueceu a senha?</Link>
+                                </Router>
                             </div>
-                            {/* <Link to='/'></Link> */}
-                            <button type="submit" className="btn_login">Entrar</button>
-                        </from>
-                        <span className='singup'>Não tem uma conta? <span className='link_signup'>Cadastre-se</span></span>
+                            
+                            <button 
+                            type="submit"
+                            className={isLoading ? 'btn_login not_allowed' : 'btn_login pointer'}
+                            disabled={isLoading ? 'disabled' : ''}
+                            >{isLoading ? 'Carregando...' : 'Entrar'}</button>
+
+
+                        </form>
+                        <span className='singup'>Não tem uma conta?
+                            <Router>
+                                <Link className='link_signup' to='/cadastro'><span className='link_signup' >Cadastre-se</span></Link>
+                            </Router>
+                        </span>
                     </div>
                 </div>
             </main>
