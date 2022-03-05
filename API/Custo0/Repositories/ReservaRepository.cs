@@ -20,6 +20,9 @@ namespace Custo0.Repositories
 
         public void Criar(Reserva novaReserva)
         {
+            novaReserva.DataSolicitacao = DateTime.Now;
+
+
             ctx.Reservas.Add(novaReserva);
             ctx.SaveChanges();
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Custo0.Interfaces
 {
-    interface IClienteRepository
+    public interface IClienteRepository
     {
         /// <summary>
         /// Lista todos os clientes

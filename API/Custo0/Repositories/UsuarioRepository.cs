@@ -12,7 +12,7 @@ namespace Custo0.Repositories
 {
     public class UsuarioRepository : IUsuarioRepository
     {
-        private readonly Cust0Context ctx = new();
+        Cust0Context ctx = new();
 
         public void Atualizar(int id, Usuario usuarioAtualizado)
         {
@@ -43,7 +43,11 @@ namespace Custo0.Repositories
 
             novoUsuario.Senha = Cripto.GerarHash(novoUsuario.Senha);
 
-            ctx.Usuarios.Add(novoUsuario);            
+            ctx.Usuarios.Add(novoUsuario);
+
+            ctx.SaveChanges();
+
+
         }
 
         public void Deletar(int id)

@@ -36,7 +36,7 @@ namespace Custo0.Interfaces
         /// Atualiza um produto existente
         /// </summary>
         /// <param name="id">ID do produto que será atualizado</param>
-        /// <param name="usuarioAtualizado">Objeto com as novas informações</param>
+        /// <param name="produtoAtualizado">Objeto com as novas informações</param>
         void Atualizar(int id, Produto produtoAtualizado);
 
         /// <summary>
@@ -50,6 +50,6 @@ namespace Custo0.Interfaces
         /// </summary>
         /// <param name="id">ID do produto que será buscado</param>
         /// <returns>Um produto buscado</returns>
-        Produto BuscarPorId(int id);
+        Produto BuscarPorId(int? id);
     }
 }

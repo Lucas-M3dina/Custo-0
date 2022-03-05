@@ -1,5 +1,6 @@
 ﻿using Custo0.Domains;
 using Custo0.Interfaces;
+using Custo0.Repositories;
 using Custo0.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -20,14 +21,14 @@ namespace Custo0.Controllers
 
     // Define que é um controlador de API
     [ApiController]
-    public class LoginController : Controller
+    public class LoginController : ControllerBase
     {
 
-        private readonly IUsuarioRepository _usuarioRepository;
+        private IUsuarioRepository _usuarioRepository { get; set; }
 
-        public LoginController(IUsuarioRepository ctx)
+        public LoginController()
         {
-            _usuarioRepository = ctx;
+            _usuarioRepository = new UsuarioRepository();
         }
 
         /// <summary>
@@ -45,7 +46,7 @@ namespace Custo0.Controllers
 
                 if (usuarioBuscado == null)
                 {
-                    return Unauthorized(new { msg = "email" });
+                    return Unauthorized(new { msg = "Email ou senha incorretos" });
                 }
 
                 // Caso o usuário seja encontrado, prossegue para a criação do token

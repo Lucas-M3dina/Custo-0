@@ -1,6 +1,7 @@
 ﻿using Custo0.Contexts;
 using Custo0.Domains;
 using Custo0.Interfaces;
+using Custo0.Utils;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,8 @@ namespace Custo0.Repositories
 
         public void Cadastrar(Cliente novoCliente)
         {
+            novoCliente.IdUsuarioNavigation.Senha = Cripto.GerarHash(novoCliente.IdUsuarioNavigation.Senha);
+
             ctx.Clientes.Add(novoCliente);
             ctx.SaveChanges();
         }

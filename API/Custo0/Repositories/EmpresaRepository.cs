@@ -1,6 +1,7 @@
 ﻿using Custo0.Contexts;
 using Custo0.Domains;
 using Custo0.Interfaces;
+using Custo0.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -48,6 +49,9 @@ namespace Custo0.Repositories
 
         public void Cadastrar(Empresa novaEmpresa)
         {
+
+            novaEmpresa.IdUsuarioNavigation.Senha = Cripto.GerarHash(novaEmpresa.IdUsuarioNavigation.Senha);
+
             ctx.Empresas.Add(novaEmpresa);
             ctx.SaveChanges();
         }

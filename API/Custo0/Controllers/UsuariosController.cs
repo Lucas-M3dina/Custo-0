@@ -1,5 +1,6 @@
 ﻿using Custo0.Domains;
 using Custo0.Interfaces;
+using Custo0.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,18 @@ namespace Custo0.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
-    public class UsuariosController : Controller
+    public class UsuariosController : ControllerBase
     {
-        private readonly IUsuarioRepository _usuarioRepository;
+        private IUsuarioRepository _usuarioRepository { get; set; }
+        private IClienteRepository _clienteRepository { get; set; }
+        private IEmpresaRepository _empresaRepository { get; set; }
 
-        public UsuariosController(IUsuarioRepository contexto)
+
+        public UsuariosController()
         {
-            _usuarioRepository = contexto;
+            _usuarioRepository = new UsuarioRepository();
+            _clienteRepository = new ClienteRepository();
+            _empresaRepository = new EmpresaRepository();
         }
 
         [HttpGet]
@@ -27,14 +33,15 @@ namespace Custo0.Controllers
             return Ok(_usuarioRepository.Listar());
         }
 
-        [HttpPost]
+
         public IActionResult Post(Usuario user)
         {
             try
             {
                 _usuarioRepository.Cadastrar(user);
 
-                return Created("Usuario Cadastrado", new { id = user.IdUsuario });
+                
+                return StatusCode(201);
             }
             catch (Exception erro)
             {

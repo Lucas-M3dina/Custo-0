@@ -148,3 +148,5 @@ C:\Users\User\Desktop\Custo-0\API\Custo0\obj\Debug\net5.0\Custo0.dll
 C:\Users\User\Desktop\Custo-0\API\Custo0\obj\Debug\net5.0\ref\Custo0.dll
 C:\Users\User\Desktop\Custo-0\API\Custo0\obj\Debug\net5.0\Custo0.pdb
 C:\Users\User\Desktop\Custo-0\API\Custo0\obj\Debug\net5.0\Custo0.genruntimeconfig.cache
+C:\Users\User\Desktop\Custo-0\API\Custo0\bin\Debug\net5.0\Custo0.xml
+C:\Users\User\Desktop\Custo-0\API\Custo0\obj\Debug\net5.0\Custo0.xml

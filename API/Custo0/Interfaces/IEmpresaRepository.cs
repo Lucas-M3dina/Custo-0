@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Custo0.Interfaces
 {
     // empresa e instituicao estao repetidos de proposito pq n sei como vao ser chamados no bd
-    interface IEmpresaRepository
+    public interface IEmpresaRepository
     {
         /// <summary>
         /// Lista todos as empresas

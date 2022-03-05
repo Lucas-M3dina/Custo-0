@@ -27,9 +27,9 @@ namespace Custo0.Repositories
             {
                 produtoBuscado.Quantidade = produtoAtualizado.Quantidade;
             }
-            if (produtoAtualizado.Promocao != null)
+            if (produtoAtualizado.Titulo != null)
             {
-                produtoBuscado.Promocao = produtoAtualizado.Promocao;
+                produtoBuscado.Titulo = produtoAtualizado.Titulo;
             }
             if (produtoAtualizado.Descricao != null)
             {
@@ -49,7 +49,7 @@ namespace Custo0.Repositories
             ctx.SaveChanges();
         }
 
-        public Produto BuscarPorId(int id)
+        public Produto BuscarPorId(int? id)
         {
             return ctx.Produtos.FirstOrDefault(p => p.IdProduto == id);
         }
@@ -73,14 +73,7 @@ namespace Custo0.Repositories
         {
             DateTime now = DateTime.Now;
 
-            List<Produto> produtos = ctx.Produtos.Include(C => C.IdEmpresaNavigation).Include(C => C.IdTipoProdutoNavigation).Where(c => c.DataValidade > now).ToList();
-
-            foreach (Produto p in produtos)
-            {
-                Deletar(p.IdProduto);
-            }
-
-            return ctx.Produtos.Include(C => C.IdEmpresaNavigation).Include(C => C.IdTipoProdutoNavigation).ToList();
+            return ctx.Produtos.Include(C => C.IdEmpresaNavigation).Include(C => C.IdTipoProdutoNavigation).Where(c => c.DataValidade > now).ToList(); 
         }
 
         public List<Produto> ListarCategoria(int idCategoria)
@@ -91,7 +84,9 @@ namespace Custo0.Repositories
 
         public List<Produto> ListarInstituicao(int idInstituicao)
         {
-            return ctx.Produtos.Include(C => C.IdEmpresaNavigation).Include(C => C.IdTipoProdutoNavigation).Where(c => c.IdEmpresa == idInstituicao).ToList();
+            DateTime now = DateTime.Now;
+
+            return ctx.Produtos.Include(C => C.IdEmpresaNavigation).Include(C => C.IdTipoProdutoNavigation).Where(c => c.DataValidade > now && c.IdEmpresa == idInstituicao ).ToList();
         }
 
         public void SalvarPerfilDir(IFormFile foto, int id_usuario)
