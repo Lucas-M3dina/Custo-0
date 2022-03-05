@@ -3,8 +3,10 @@ import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Redirect, Switch } from 'react-router-dom';
 import './index.css';
 import Login from './pages/Login';
+import Cadastro from './pages/Cadastro';
 import Home from './pages/Home';
 import Produto from './pages/Produto';
+import Reservas from './pages/Reservas';
 import reportWebVitals from './reportWebVitals';
 
 const routing = (
@@ -12,8 +14,10 @@ const routing = (
     <div>
       <Switch>
         <Route path="/login" component={Login}></Route>
+        <Route path="/cadastro" component={Cadastro}></Route>
         <Route exact path="/" component={Home}></Route>
         <Route path="/produto" component={Produto}></Route>
+        <Route path="/reservas" component={Reservas}></Route>
       </Switch>
     </div>
   </Router>
