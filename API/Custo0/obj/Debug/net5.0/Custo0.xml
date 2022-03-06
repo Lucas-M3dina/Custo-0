@@ -73,18 +73,11 @@
             </summary>
             <returns>Uma lista de Reservas</returns>
         </member>
-        <member name="M:Custo0.Controllers.ReservasController.GetById(System.Int32)">
-            <summary>
-            Busca um usuário através do ID
-            </summary>
-            <param name="Id">ID da Reserva que será buscado</param>
-            <returns>Um usuário buscado e um status code 200 - Ok</returns>
-        </member>
-        <member name="M:Custo0.Controllers.ReservasController.CriarReserva(Custo0.Domains.Reserva)">
+        <member name="M:Custo0.Controllers.ReservasController.CriarReserva(Custo0.ViewModels.ReservaViewModel)">
             <summary>
             Cadastra uma Reserva
             </summary>
-            <param name="NovaReserva">Reserva a ser cadastrada</param>
+            <param name="r">Reserva a ser cadastrada</param>
             <returns>Um status code 201 - Created</returns>
         </member>
         <member name="M:Custo0.Controllers.ReservasController.Deletar(System.Int32)">

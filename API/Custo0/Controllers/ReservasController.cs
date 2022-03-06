@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Authorization;
 using Custo0.ViewModels;
+using System.Security.Claims;
 
 namespace Custo0.Controllers
 {
@@ -82,7 +83,7 @@ namespace Custo0.Controllers
         {
             try
             {
-                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+                int idUsuario = Convert.ToInt32(HttpContext.User.FindFirstValue("JwtRegisteredClaimNames.Jti"));  
 
                 Empresa e = _empresaRepository.BuscarPorIdUser(idUsuario);
 
@@ -114,12 +115,12 @@ namespace Custo0.Controllers
         /// <summary>
         /// Cadastra uma Reserva
         /// </summary>
-        /// <param name="NovaReserva">Reserva a ser cadastrada</param>
+        /// <param name="r">Reserva a ser cadastrada</param>
         /// <returns>Um status code 201 - Created</returns>
         [HttpPost]
         public IActionResult CriarReserva(ReservaViewModel r)
         {
-            int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+            int idUsuario = Convert.ToInt32(HttpContext.User.FindFirstValue("JwtRegisteredClaimNames.Jti"));
             Usuario u = _usuarioRepository.BuscarPorId(idUsuario);
             Produto p = _produtoRepository.BuscarPorId(r.IdProduto);
             Cliente c = _clienteRepository.BuscarPorIdUser(idUsuario);
