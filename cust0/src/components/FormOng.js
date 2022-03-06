@@ -21,21 +21,22 @@ export default function FormOng() {
                         
                     </select>
                 </div>
+
                 <div className='row_names'>
-                    <input className='small_input' type="text" name="" id="" />
+                    <input className='small_input' type="text" name="" id="" placeholder="CEP"/>
                     
                     <input
-                    onChange={campo => setEmail(campo.target.value)} value={email}
-                    className='small_input' type="email" placeholder="E-mail"/>
+                    className='small_input' type="text" placeholder="Rua"/>
                 </div>
 
                 <input
-                onChange={campo => setSenha(campo.target.value)} value={senha} required
-                className='normal_input' type="password" name="senha" id="" placeholder='Senha'/>
+                className='normal_input' type="text" name="senha" id="" placeholder='Senha'/>
 
 
                 <input
-                onChange={campo => setConfirmaSenha(campo.target.value)} value={senha} required
+                className='normal_input' type="password" name="confirmaSenha" id="" placeholder='Confirme a senha'/>
+
+                <input
                 className='normal_input' type="password" name="confirmaSenha" id="" placeholder='Confirme a senha'/>
 
                 {isLoading ? 

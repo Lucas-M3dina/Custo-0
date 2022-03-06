@@ -54,7 +54,6 @@ namespace Custo0.Repositories
 
         public void Cadastrar(Empresa novaEmpresa)
         {
-
             novaEmpresa.IdUsuarioNavigation.Senha = Cripto.GerarHash(novaEmpresa.IdUsuarioNavigation.Senha);
 
             ctx.Empresas.Add(novaEmpresa);

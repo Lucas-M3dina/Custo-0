@@ -120,7 +120,7 @@ namespace Custo0.Controllers
         [HttpPost]
         public IActionResult CriarReserva(ReservaViewModel r)
         {
-            int idUsuario = Convert.ToInt32(HttpContext.User.FindFirstValue("JwtRegisteredClaimNames.Jti"));
+            int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
             Usuario u = _usuarioRepository.BuscarPorId(idUsuario);
             Produto p = _produtoRepository.BuscarPorId(r.IdProduto);
             Cliente c = _clienteRepository.BuscarPorIdUser(idUsuario);

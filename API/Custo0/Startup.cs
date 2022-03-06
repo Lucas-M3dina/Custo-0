@@ -31,7 +31,6 @@ namespace Custo0
                     options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                 });
 
-            services.AddSwaggerGen();
 
             services.AddCors(options =>
             {
@@ -92,9 +91,11 @@ namespace Custo0
 
             app.UseRouting();
 
-            app.UseCors("CorPolicy");
+            app.UseAuthentication();
 
             app.UseAuthorization();
+
+            app.UseCors("CorPolicy");
 
             app.UseEndpoints(endpoints =>
             {

@@ -33,7 +33,7 @@ namespace Custo0.Controllers
             return Ok(_usuarioRepository.Listar());
         }
 
-
+        [HttpPost]
         public IActionResult Post(Usuario user)
         {
             try

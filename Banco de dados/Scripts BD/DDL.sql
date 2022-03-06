@@ -8,6 +8,7 @@ CREATE TABLE tipoUsuario(
 idTipoUsuario TINYINT PRIMARY KEY IDENTITY (1,1),
 nomeTipoUsuario VARCHAR(12) NOT NULL
 );
+GO
 
 CREATE TABLE Usuario(
 idUsuario BIGINT PRIMARY KEY IDENTITY (1,1),
@@ -15,11 +16,13 @@ idTipoUsuario TINYINT FOREIGN KEY REFERENCES tipoUsuario(idTipoUsuario),
 email VARCHAR(266) NOT NULL,
 senha VARCHAR(70) NOT NULL
 );
+GO
 
 CREATE TABLE Estado(
 idEstado TINYINT PRIMARY KEY IDENTITY (1,1),
 nomeEstado VARCHAR(40) NOT NULL
 );
+GO
 
 CREATE TABLE Endereco(
 idEndereco BIGINT PRIMARY KEY IDENTITY (1,1),
@@ -35,6 +38,7 @@ idEndereco BIGINT FOREIGN KEY REFERENCES Endereco(idEndereco),
 nome VARCHAR(50) NOT NULL,
 documento VARCHAR(24) NOT NULL
 );
+GO
 
 CREATE TABLE Empresa(
 idEmpresa SMALLINT PRIMARY KEY IDENTITY (1,1),
@@ -44,11 +48,13 @@ nomeFantasia VARCHAR(50) NOT NULL,
 cnpj VARCHAR(24) NOT NULL,
 imagemEmpresa VARCHAR(74) 
 );
+GO
 
 CREATE TABLE tipoProduto(
 idTipoProduto TINYINT PRIMARY KEY IDENTITY (1,1),
 titulo VARCHAR(20) NOT NULL
 );
+GO
 
 CREATE TABLE Produto(
 idProduto INT PRIMARY KEY IDENTITY (1,1),
@@ -61,11 +67,13 @@ descricao VARCHAR(470) NOT NULL,
 imagemProduto VARCHAR(74),
 dataValidade SMALLDATETIME
 );
+GO
 
 CREATE TABLE situacaoReserva(
 idSituacaoReserva TINYINT PRIMARY KEY IDENTITY (1,1),
 tituloReserva VARCHAR(20)
 );
+GO
 
 CREATE TABLE Reserva(
 idReserva INT PRIMARY KEY IDENTITY (1,1),
@@ -77,6 +85,5 @@ quantidade INT,
 preco FLOAT,
 dataSolicitacao SMALLDATETIME
 );
-
-
+GO
 

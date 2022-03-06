@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\Custo-0\\API\\Custo0\\Custo0.csproj": {}
+    "C:\\Users\\gugag\\OneDrive\\Área de Trabalho\\cust0\\Custo-0\\API\\Custo0\\Custo0.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\Custo-0\\API\\Custo0\\Custo0.csproj": {
+    "C:\\Users\\gugag\\OneDrive\\Área de Trabalho\\cust0\\Custo-0\\API\\Custo0\\Custo0.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\Custo-0\\API\\Custo0\\Custo0.csproj",
+        "projectUniqueName": "C:\\Users\\gugag\\OneDrive\\Área de Trabalho\\cust0\\Custo-0\\API\\Custo0\\Custo0.csproj",
         "projectName": "Custo0",
-        "projectPath": "C:\\Users\\User\\Desktop\\Custo-0\\API\\Custo0\\Custo0.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\Custo-0\\API\\Custo0\\obj\\",
+        "projectPath": "C:\\Users\\gugag\\OneDrive\\Área de Trabalho\\cust0\\Custo-0\\API\\Custo0\\Custo0.csproj",
+        "packagesPath": "C:\\Users\\gugag\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gugag\\OneDrive\\Área de Trabalho\\cust0\\Custo-0\\API\\Custo0\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gugag\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -107,6 +107,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.13, 5.0.13]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -115,7 +121,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
