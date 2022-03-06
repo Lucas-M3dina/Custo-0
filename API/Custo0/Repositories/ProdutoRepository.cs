@@ -54,6 +54,8 @@ namespace Custo0.Repositories
             return ctx.Produtos.FirstOrDefault(p => p.IdProduto == id);
         }
 
+        
+
         public void Cadastrar(Produto novoProduto)
         {
             ctx.Produtos.Add(novoProduto);
@@ -89,7 +91,7 @@ namespace Custo0.Repositories
             return ctx.Produtos.Include(C => C.IdEmpresaNavigation).Include(C => C.IdTipoProdutoNavigation).Where(c => c.DataValidade > now && c.IdEmpresa == idInstituicao ).ToList();
         }
 
-        public void SalvarPerfilDir(IFormFile foto, int id_usuario)
+        public string SalvarPerfilDir(IFormFile foto, int id_usuario)
         {
 
             string nome_novo = id_usuario.ToString() + ".png";
@@ -101,20 +103,7 @@ namespace Custo0.Repositories
                 foto.CopyTo(stream);
             }
 
-            Produto produtoAtualizado = new();
-
-            Produto produtoBuscado = BuscarPorId(id_usuario);
-
-           
-            if (produtoAtualizado.ImagemProduto != null)
-            {
-                produtoBuscado.ImagemProduto = produtoAtualizado.ImagemProduto;
-            }
-           
-
-            ctx.Produtos.Update(produtoBuscado);
-
-            ctx.SaveChanges();
+            return caminho;
         }
 
         public string ConsultarPerfilDir(int id_usuario)

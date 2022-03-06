@@ -63,7 +63,7 @@ namespace Custo0.Controllers
                     new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email),
                     new Claim(ClaimTypes.Role, usuarioBuscado.IdTipoUsuario.ToString()),
                     new Claim("role", usuarioBuscado.IdTipoUsuario.ToString()),
-                    new Claim("IdUsuario", usuarioBuscado.IdUsuario.ToString()),
+                    new Claim(JwtRegisteredClaimNames.Jti, usuarioBuscado.IdUsuario.ToString()),
 
                 };
 

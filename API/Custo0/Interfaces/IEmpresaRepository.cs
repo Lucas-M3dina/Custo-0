@@ -40,5 +40,7 @@ namespace Custo0.Interfaces
         /// <param name="id">ID da empresa que será buscada</param>
         /// <returns>Uma empresa buscada</returns>
         Empresa BuscarPorId(int id);
+
+        Empresa BuscarPorIdUser(int? id);
     }
 }

@@ -47,6 +47,11 @@ namespace Custo0.Repositories
             return ctx.Empresas.FirstOrDefault(p => p.IdEmpresa == id);
         }
 
+        public Empresa BuscarPorIdUser(int? id)
+        {
+            return ctx.Empresas.FirstOrDefault(p => p.IdUsuario == id);
+        }
+
         public void Cadastrar(Empresa novaEmpresa)
         {
 

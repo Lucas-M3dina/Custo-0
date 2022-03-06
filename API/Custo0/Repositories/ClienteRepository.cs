@@ -41,6 +41,11 @@ namespace Custo0.Repositories
             return ctx.Clientes.FirstOrDefault(p => p.IdCliente == id);
         }
 
+        public Cliente BuscarPorIdUser(int? id)
+        {
+            return ctx.Clientes.FirstOrDefault(p => p.IdUsuario == id);
+        }
+
         public void Cadastrar(Cliente novoCliente)
         {
             novoCliente.IdUsuarioNavigation.Senha = Cripto.GerarHash(novoCliente.IdUsuarioNavigation.Senha);

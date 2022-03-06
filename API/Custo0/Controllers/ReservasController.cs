@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Custo0.Controllers
 {
@@ -19,8 +20,10 @@ namespace Custo0.Controllers
         /// Objeto que irá receber todos os métodos da interface
         /// </summary>
         private IReservaRepository _reservaRepository { get; set; }
-
+        private IClienteRepository _clienteRepository { get; set; }
+        private IEmpresaRepository _empresaRepository { get; set; }
         private IProdutoRepository _produtoRepository { get; set; }
+        private IUsuarioRepository _usuarioRepository { get; set; }
 
         /// <summary>
         /// Instancia o objeto para que haja referência às implementações no repositório
@@ -29,6 +32,9 @@ namespace Custo0.Controllers
         {
             _reservaRepository = new ReservaRepository();
             _produtoRepository = new ProdutoRepository();
+            _clienteRepository = new ClienteRepository();
+            _empresaRepository = new EmpresaRepository();
+            _usuarioRepository = new UsuarioRepository();
         }
 
 
@@ -36,6 +42,7 @@ namespace Custo0.Controllers
         /// Lista todas as Reservas existentes
         /// </summary>
         /// <returns>Uma lista de Reservas</returns>
+        
         [HttpGet]
         public IActionResult Get()
         {
@@ -50,17 +57,16 @@ namespace Custo0.Controllers
         }
 
 
-        /// <summary>
-        /// Busca um usuário através do ID
-        /// </summary>
-        /// <param name="Id">ID da Reserva que será buscado</param>
-        /// <returns>Um usuário buscado e um status code 200 - Ok</returns>
-        [HttpGet("{Id}")]
-        public IActionResult GetById(int Id)
+        [HttpGet("cliente")]
+        public IActionResult ListaDoCliente()
         {
             try
             {
-                return Ok(_reservaRepository.BuscarPorId(Id));
+                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+
+                Cliente c = _clienteRepository.BuscarPorIdUser(idUsuario);
+
+                return Ok(_reservaRepository.ListarCliente(c.IdCliente));
             }
             catch (Exception Erro)
             {
@@ -68,6 +74,40 @@ namespace Custo0.Controllers
             }
         }
 
+
+        [HttpGet("empresa")]
+        public IActionResult ListaDaEmpresa()
+        {
+            try
+            {
+                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+
+                Empresa e = _empresaRepository.BuscarPorIdUser(idUsuario);
+
+                return Ok(_reservaRepository.ListarEmpresa(e.IdEmpresa));
+            }
+            catch (Exception Erro)
+            {
+                return BadRequest(Erro);
+            }
+        }
+
+        [HttpGet("empresa/pendente")]
+        public IActionResult PendenteDaEmpresa()
+        {
+            try
+            {
+                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+
+                Empresa e = _empresaRepository.BuscarPorIdUser(idUsuario);
+
+                return Ok(_reservaRepository.ListarPendentes(e.IdEmpresa));
+            }
+            catch (Exception Erro)
+            {
+                return BadRequest(Erro);
+            }
+        }
 
         /// <summary>
         /// Cadastra uma Reserva
@@ -77,6 +117,13 @@ namespace Custo0.Controllers
         [HttpPost]
         public IActionResult CriarReserva(Reserva NovaReserva)
         {
+            int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+            Usuario u = _usuarioRepository.BuscarPorId(idUsuario);
+            if(u.IdTipoUsuario == 3)
+            {
+                NovaReserva.Preco = 0;
+            }
+
             Produto p = _produtoRepository.BuscarPorId(NovaReserva.IdProduto);
             NovaReserva.IdEmpresa = p.IdEmpresa;
 

@@ -40,5 +40,7 @@ namespace Custo0.Interfaces
         /// <param name="id">ID do cliente que será buscado</param>
         /// <returns>Um cliente buscado</returns>
         Cliente BuscarPorId(int id);
+
+        public Cliente BuscarPorIdUser(int? id);
     }
 }

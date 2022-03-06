@@ -1,4 +1,5 @@
 ﻿using Custo0.Domains;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,5 +52,7 @@ namespace Custo0.Interfaces
         /// <param name="id">ID do produto que será buscado</param>
         /// <returns>Um produto buscado</returns>
         Produto BuscarPorId(int? id);
+
+        public string SalvarPerfilDir(IFormFile foto, int id_usuario);
     }
 }

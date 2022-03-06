@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Custo0.Controllers
 {
@@ -16,9 +17,11 @@ namespace Custo0.Controllers
     public class ProdutosController : ControllerBase
     {
         private IProdutoRepository _produtoRepository { get; set; }
+        private IEmpresaRepository _empresaRepository { get; set; }
         public ProdutosController()
         {
             _produtoRepository = new ProdutoRepository();
+            _empresaRepository = new EmpresaRepository();
         }
 
         [HttpGet]
@@ -93,8 +96,16 @@ namespace Custo0.Controllers
         {
             try
             {
-                _produtoRepository.Atualizar(Id, ProdutoAtualizado);
-                return StatusCode(204);
+                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+
+                Empresa e = _empresaRepository.BuscarPorIdUser(idUsuario);
+
+                if (ProdutoAtualizado.IdEmpresa == e.IdEmpresa)
+                {
+                    _produtoRepository.Atualizar(Id, ProdutoAtualizado);
+                    return StatusCode(204);
+                }
+                return StatusCode(203);
             }
             catch (Exception Erro)
             {
