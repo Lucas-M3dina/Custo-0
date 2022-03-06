@@ -3,11 +3,12 @@ import { useHistory, Link, BrowserRouter as Router } from "react-router-dom";
 import axios from 'axios';
 import nullProduct from "../assets/null.png"
 import carrinho from "../assets/icoCarrinho.png"
-
 import edit from "../assets/icon-edit.svg"
 import delet from "../assets/icon-delete.svg"
 import "../css/Produto.css"
 import api from '../services/api';
+import Header from "../components/Header"
+
 
 export default function App() {
 
@@ -157,6 +158,7 @@ export default function App() {
         return (
             <section className='produto-section'>
 
+
                 <form className='reservar-produto' onSubmit={postarReserva}>
                     {
                         produto.imagemProduto != null ?
@@ -218,6 +220,7 @@ export default function App() {
 
     return (
         <div>
+            <Header></Header>
             {
                 produto.id != null ?
                     telaProduto() :
