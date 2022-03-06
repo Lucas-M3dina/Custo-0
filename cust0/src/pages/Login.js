@@ -7,14 +7,13 @@ import background from "../assets/loginBackGround.png"
 import '../css/Login.css'
 import '../css/Reset.css'
 
-
 export default function Login() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [erroMessage, setErroMessage] = useState('');
 
-    const hisotry = useHistory();
+    const history = useHistory();
 
     const Logar = (event) => {
         event.preventDefault();
@@ -39,7 +38,7 @@ export default function Login() {
 
                     setIsLoading(false)
 
-                    hisotry.push('/produtos')
+                    history.push('/produtos')
                 }
             }).catch(erro => {
                 console.log(erro)

@@ -1,6 +1,13 @@
 import "../css/Home.css"
 import Card from "../components/Card"
 import { React, Component, useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
+
+
+import logo from "../assets/logo.png"
+import barras from "../assets/barras.png"
+import "../components/css/Header.css"
+
 import axios from "axios";
 
 export default function App() {
@@ -24,7 +31,7 @@ export default function App() {
             
         return(
             listaProdutos.map(p =>
-                r.test(p.descricao.toLowerCase()) ?
+                r.test(p.titulo.toLowerCase()) ?
                     <Card data={p} /> : null
             )
         )
@@ -38,9 +45,24 @@ export default function App() {
 
     return (
         <div>
+            <header>
+                <img class="logo" src={logo}></img>
+
+
+                <div>
+                    <input class="pesquisa" type="text" value={campoBusca} onChange={onChange} >
+
+                    </input>
+                </div>
+                {/* <a href="">
+              <img class="lupa" src="lupa.png"></img>
+              </a> */}
+                <Link class="barras-link" to='/reservas'>
+                    <img class="barras" src={barras}></img>
+                </Link>
+            </header>
             <div className="container-login">
                 <h1 className="titulo-login">Alimentos</h1>
-                <input type="text" value={campoBusca} onChange={onChange} />
                 <section className="section-login">
                     {
                         listarProdutos()

@@ -13,9 +13,9 @@ const routing = (
   <Router>
     <div>
       <Switch>
-        <Route path="/login" component={Login}></Route>
         <Route path="/cadastro" component={Cadastro}></Route>
-        <Route exact path="/" component={Home}></Route>
+        <Route exact path="/" component={Login}></Route>
+        <Route path="/produtos" component={Home}></Route>
         <Route path="/produto" component={Produto}></Route>
         <Route path="/reservas" component={Reservas}></Route>
       </Switch>

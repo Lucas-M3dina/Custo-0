@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from 'react';
+import { useHistory, Link, BrowserRouter as Router } from "react-router-dom";
 import axios from 'axios';
 import nullProduct from "../assets/null.png"
 import carrinho from "../assets/icoCarrinho.png"
@@ -6,6 +7,7 @@ import carrinho from "../assets/icoCarrinho.png"
 import edit from "../assets/icon-edit.svg"
 import delet from "../assets/icon-delete.svg"
 import "../css/Produto.css"
+import api from '../services/api';
 
 export default function App() {
 
@@ -13,12 +15,15 @@ export default function App() {
     const [qntade, setQntade] = useState(1);
 
     const [showModal, setShowModal] = useState(false);
+    const [titulo, setTitulo] = useState('');
     const [tipo, setTipo] = useState(0);
     const [preco, setPreco] = useState(0);
     const [estoque, setEstoque] = useState(0);
     const [img, setImg] = useState('');
     const [descricao, setDescricao] = useState('');
 
+    const history = useHistory();
+    const [erroMessage, setErroMessage] = useState('dsadadas');
 
     const real = new Intl.NumberFormat([], {
         style: 'currency',
@@ -41,14 +46,40 @@ export default function App() {
 
     function postarReserva(event) {
         event.preventDefault()
-        console.log("reserva efetuada!")
-        // axios.post('', qntade, produto.id)
+        api.post('/reservas', {
+            quantidade: qntade,
+            idProduto: produto.id
+        })
+            .then((resposta) => {
+                if (resposta.status == 201) {
+                    history.push('/reservas')
+                }
+            })
+            .catch(erro => {console.log(erro)})
     }
 
     function editarProduto(event) {
         event.preventDefault()
-        console.log('editado.')
-        setShowModal(false)
+        api.put(`produtos/${produto.idProduto}`, {
+            idProduto: produto.idProduto,
+            idTipoProduto: tipo,
+            idEmpresa: produto.idEmpresa,
+            preco: preco,
+            quantidade: estoque,
+            titulo: titulo,
+            descricao: descricao,
+            imagemProduto: img,
+            dataValidade: produto.dataValidade
+        })
+            .then((resposta) => {
+                if (resposta.status == 201) {
+                    history.reload()
+                }
+                setErroMessage("Erro. Informações inválidas.")
+                formEditar()
+
+            })
+            .catch(setErroMessage("Erro. Tente novamente mais tarde."))
     }
 
     function onChange(event) {
@@ -75,10 +106,14 @@ export default function App() {
                     >
                         <h2>Editar Produto</h2>
 
+                        <div>
+                            <span>Titulo</span>
+                            <input type="text" onChange={(c) => setTitulo(c.target.value)} value={titulo} />
+                        </div>
 
                         <div>
                             <span>Tipo de produto</span>
-                            <select name="" value={tipo} onChange={(c) => setTipo(c.target.value)} id="">
+                            <select value={tipo} onChange={(c) => setTipo(c.target.value)} >
                                 <option value={1}>Limpeza e Higiene</option>
                                 <option value={2}>Alimentação</option>
                                 <option value={3}>Lazer</option>
@@ -90,23 +125,25 @@ export default function App() {
 
                         <div>
                             <span>Preço(R$)</span>
-                            <input type="number" onChange={(c) => setPreco(c.target.value)} name="" value={preco} id="" />
+                            <input type="number" onChange={(c) => setPreco(c.target.value)} value={preco} />
                         </div>
 
                         <div>
                             <span>Estoque</span>
-                            <input type="number" onChange={(c) => setEstoque(c.target.value)} name="" value={estoque} id="" />
+                            <input type="number" onChange={(c) => setEstoque(c.target.value)} value={estoque} />
                         </div>
 
                         <div>
                             <span>Imagem</span>
-                            <input type="file" name="" id="" />
+                            <input type="file" />
                         </div>
 
                         <div>
                             <span>Descrição</span>
-                            <textarea className="input-descricao-pp" onChange={(c) => setDescricao(c.target.value)} type="" value={descricao} name="" id="" />
+                            <textarea className="input-descricao-pp" onChange={(c) => setDescricao(c.target.value)} type="" value={descricao} />
                         </div>
+
+                        <span className="lgn_erromsg">{erroMessage}</span>
 
                         <button type="submit">Enviar</button>
                     </form>
@@ -159,11 +196,13 @@ export default function App() {
 
     function abrirForm() {
         console.log(produto)
+        setTitulo(produto.titulo)
         setTipo(produto.idTipoProduto)
         setPreco(produto.preco)
         setEstoque(produto.quantidade)
         setImg(produto.imagemProduto)
         setDescricao(produto.descricao)
+        setErroMessage('')
         setShowModal(true)
     }
 
@@ -182,7 +221,7 @@ export default function App() {
             {
                 produto.id != null ?
                     telaProduto() :
-                    <p>Não funciona!</p>
+                    <p>Não encontrado.</p>
             }
         </div>
     )

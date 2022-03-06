@@ -98,24 +98,16 @@
 
 .fundo-pp {
     display: flex;
-    /* Hidden by default */
     align-items: center;
     position: fixed;
-    /* Stay in place */
     z-index: 1;
-    /* Sit on top */
     left: 0;
     top: 0;
     width: 100%;
-    /* Full width */
     height: 100%;
-    /* Full height */
     overflow: auto;
-    /* Enable scroll if needed */
     background-color: rgb(0, 0, 0);
-    /* Fallback color */
     background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
 }
 
 .fundo-pp form {
@@ -127,6 +119,7 @@
     flex-direction: column;
     align-items: center;
     padding: 30px;
+    margin: 10px;
 }
 
 .fundo-pp h2 {
@@ -143,14 +136,15 @@
     margin-bottom: 3px;
 }
 
-.fundo-pp select, .fundo-pp input, .fundo-pp textarea {
+.fundo-pp select, .fundo-pp input {
     width: 30vw;
     height: 30px;
 }
 
 .input-descricao-pp {
     resize: none;
-    height: 100px;
+    height: auto;
+    width: 30vw;
     font-family: Arial, Helvetica, sans-serif;
     padding: 5px 10px;
 }

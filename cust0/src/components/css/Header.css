@@ -1,0 +1,90 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  header{
+    height: 90px;
+    background-color: #61BB6A;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .logo{
+    height: 80%;
+  }
+
+  .barras-link{
+      height: 100%;
+      display: flex;
+      align-items: center;
+  }
+
+  .barras{
+      height: 50%;
+  }
+
+  .pesquisa{
+    
+    width: 550px;
+    height: 40px;
+    border-radius: 75px;
+    background-image: url('../../assets/lupa.png');
+    background-repeat: no-repeat;
+    background-position: 98% center;
+    padding: 0 20px;
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 360px){ 
+
+      header{
+          width: 100vw;
+          height: 20vh;
+          flex-direction: row-reverse;
+      }
+
+    .pesquisa{
+        width: 200px;
+        height: 30px;
+        
+    }
+
+    .logo{
+        display: none;
+    }
+
+    .lupa{
+        display: flex;
+        justify-self: center;
+    }
+
+    .barras{
+        width: 20vw;
+    }
+  }
+
+  @media screen and (max-width:600px) {
+      header{
+          width: 100vw;
+      }
+
+      .pesquisa{
+          width: 50vw;
+          padding: 3%;
+      }
+
+      .logo{
+          height: 10vh;
+          width: 20vh;
+      }
+
+      .barras{
+          width: 7vw;
+      }
+  }
+    @media screen and (max-width: 802px){
+      
+  }
