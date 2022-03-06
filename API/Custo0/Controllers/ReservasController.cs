@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Custo0.Controllers
 {
@@ -119,13 +120,34 @@ namespace Custo0.Controllers
         {
             int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
             Usuario u = _usuarioRepository.BuscarPorId(idUsuario);
-            if(u.IdTipoUsuario == 3)
-            {
-                NovaReserva.Preco = 0;
-            }
-
             Produto p = _produtoRepository.BuscarPorId(NovaReserva.IdProduto);
+            Cliente c = _clienteRepository.BuscarPorIdUser(idUsuario);
+
+            NovaReserva.IdCliente = c.IdCliente;
+            NovaReserva.IdSituacao = 1;
+            NovaReserva.Preco = p.Preco;
             NovaReserva.IdEmpresa = p.IdEmpresa;
+            NovaReserva.DataSolicitacao = DateTime.Now;
+
+            _reservaRepository.Criar(NovaReserva);
+
+            return StatusCode(201);
+        }
+
+        [Authorize(Roles = "3")]
+        [HttpPost("doacao")]
+        public IActionResult Doacao(Reserva NovaReserva)
+        {
+            int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+            Usuario u = _usuarioRepository.BuscarPorId(idUsuario);
+            Produto p = _produtoRepository.BuscarPorId(NovaReserva.IdProduto);
+            Cliente c = _clienteRepository.BuscarPorIdUser(idUsuario);
+
+            NovaReserva.IdCliente = c.IdCliente;
+            NovaReserva.IdSituacao = 1;
+            NovaReserva.Preco = 0;
+            NovaReserva.IdEmpresa = p.IdEmpresa;
+            NovaReserva.DataSolicitacao = DateTime.Now;
 
             _reservaRepository.Criar(NovaReserva);
 
