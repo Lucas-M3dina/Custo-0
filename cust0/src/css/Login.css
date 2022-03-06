@@ -143,6 +143,12 @@
 }
 
 
+@media (max-width: 1150px) {
+    .lgn_login_text {
+        font-size: 70px;
+    }
+}
+
 @media (max-width: 1000px) {
     .lgn_background_main{
         width: 60%;
@@ -151,5 +157,9 @@
 
     .lgn_login_text {
         font-size: 70px;
+    }
+
+    .lgn_container {
+        background-size: cover;
     }
 }

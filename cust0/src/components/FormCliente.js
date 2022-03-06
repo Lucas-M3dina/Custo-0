@@ -19,20 +19,26 @@ export default function FormCliente() {
 
     const history = useHistory()
 
-    const CadastrarCliente = (event) => {
+    const ConfirtPass = () => {
+        
+    }
+
+    const CadastrarCliente = async (event) => {
         event.preventDefault();
 
         setIsLoading(true)
 
-        const data = {
-            nome: nome,
-            sobreNome: sobreNome,
+        const dataCliente = {
+            nome: `${nome} ${sobreNome}`,
             documento: cpf,
-            email: email,
-            senha: senha
+            idUsuarioNavigation: {
+                email: email,
+                senha: senha,
+                IdTipoUsuario: 2
+            }
         }
 
-        api.post('/clientes/cadastrar',data)
+        await api.post('/Cliente',dataCliente)
         .then(response => {
             if (response.status == 201) {
                 console.log('cadastrado')
@@ -79,7 +85,7 @@ export default function FormCliente() {
                 className='normal_input' type="password" name="senha" id="" placeholder='Senha'/>
 
                 <input
-                onChange={campo => setConfirmaSenha(campo.target.value)} value={senha} required
+                onChange={campo => setConfirmaSenha(campo.target.value)} value={confirmaSenha} required
                 className='normal_input' type="password" name="confirmaSenha" id="" placeholder='Confirme a senha'/>
 
                 {isLoading ? 

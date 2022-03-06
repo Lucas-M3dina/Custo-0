@@ -73,7 +73,7 @@ export default function Login() {
                                     onChange={campo => setSenha(campo.target.value)}
                                     value={senha}
                                     placeholder="Senha"
-                                    type="text"
+                                    type="password"
                                     className="lgn_input lgn_password_input" />
                                 <Link className='lgn_forgot_pass' to='/'>Esqueceu a senha?</Link>
                             </div>

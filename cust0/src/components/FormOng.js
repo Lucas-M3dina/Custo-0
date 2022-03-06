@@ -16,14 +16,18 @@ export default function FormOng() {
         <div className='container_form_cliente'>
             <form className='form' action="">
                 <div className='row_names'>
-                    <input className='small_input' type="text" />
-                    <input className='small_input' type="text" />
+                    <input className='small_input' type="text" placeholder="Nome Fantasia"/>
+                    <select className="small_input" name="" id="">
+                        
+                    </select>
                 </div>
-                <input className='normal_input' type="text" name="" id="" />
-                
-                <input 
-                onChange={campo => setEmail(campo.target.value)} value={email}
-                className='normal_input' type="email" placeholder="E-mail"/>
+                <div className='row_names'>
+                    <input className='small_input' type="text" name="" id="" />
+                    
+                    <input
+                    onChange={campo => setEmail(campo.target.value)} value={email}
+                    className='small_input' type="email" placeholder="E-mail"/>
+                </div>
 
                 <input
                 onChange={campo => setSenha(campo.target.value)} value={senha} required
