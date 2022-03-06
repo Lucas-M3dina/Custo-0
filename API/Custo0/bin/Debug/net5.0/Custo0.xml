@@ -1,0 +1,292 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Custo0</name>
+    </assembly>
+    <members>
+        <member name="P:Custo0.Controllers.ClienteController._ClienteRepository">
+            <summary>
+            Objeto que irá receber todos os métodos da interface
+            </summary>
+        </member>
+        <member name="M:Custo0.Controllers.ClienteController.#ctor">
+            <summary>
+            Instancia o objeto para que haja referência às implementações no repositório
+            </summary>
+        </member>
+        <member name="M:Custo0.Controllers.ClienteController.Listar">
+            <summary>
+            Lista todos os Cliente existentes
+            </summary>
+            <returns>Uma lista de usuários</returns>
+        </member>
+        <member name="M:Custo0.Controllers.ClienteController.BuscarpPorId(System.Int32)">
+            <summary>
+            Busca um usuário através do ID
+            </summary>
+            <param name="IdCliente">ID do Cliente que será buscado</param>
+            <returns>Um usuário buscado e um status code 200 - Ok</returns>
+        </member>
+        <member name="M:Custo0.Controllers.ClienteController.Cadastrar(Custo0.Domains.Cliente)">
+            <summary>
+            Cadastra um Cliente
+            </summary>
+            <param name="NovoCliente">Usuario a ser cadastrado</param>
+            <returns>Um status code 201 - Created</returns>
+        </member>
+        <member name="M:Custo0.Controllers.ClienteController.Put(System.Int32,Custo0.Domains.Cliente)">
+            <summary>
+            Atualiza umCliente existente
+            </summary>
+            <param name="id">ID do usuário que será atualizado</param>
+            <param name="ClienteAtualizado">Objeto com as novas informações</param>
+            <returns>Um status code 204 - No Content</returns>
+        </member>
+        <member name="M:Custo0.Controllers.ClienteController.Deletar(System.Int32)">
+            <summary>
+            Deleta um usuário
+            </summary>
+            <param name="idUsuario">id do Cliente a ser deletado</param>
+            <returns>Um status code 204 - No content</returns>
+        </member>
+        <member name="M:Custo0.Controllers.LoginController.Login(Custo0.ViewModels.LoginViewModel)">
+            <summary>
+            Valida o usuário
+            </summary>
+            <param name="login">Objeto login que contém o e-mail e a senha do usuário</param>
+            <returns>Retorna um token com as informações do usuário</returns>
+            dominio/api/Login
+        </member>
+        <member name="P:Custo0.Controllers.ReservasController._reservaRepository">
+            <summary>
+            Objeto que irá receber todos os métodos da interface
+            </summary>
+        </member>
+        <member name="M:Custo0.Controllers.ReservasController.#ctor">
+            <summary>
+            Instancia o objeto para que haja referência às implementações no repositório
+            </summary>
+        </member>
+        <member name="M:Custo0.Controllers.ReservasController.Get">
+            <summary>
+            Lista todas as Reservas existentes
+            </summary>
+            <returns>Uma lista de Reservas</returns>
+        </member>
+        <member name="M:Custo0.Controllers.ReservasController.CriarReserva(Custo0.ViewModels.ReservaViewModel)">
+            <summary>
+            Cadastra uma Reserva
+            </summary>
+            <param name="r">Reserva a ser cadastrada</param>
+            <returns>Um status code 201 - Created</returns>
+        </member>
+        <member name="M:Custo0.Controllers.ReservasController.Deletar(System.Int32)">
+            <summary>
+            Deleta um Reserva
+            </summary>
+            <param name="idReserva">id do Usuário a ser deletado</param>
+            <returns>Um status code 204 - No content</returns>
+        </member>
+        <member name="M:Custo0.Interfaces.IClienteRepository.Listar">
+            <summary>
+            Lista todos os clientes
+            </summary>
+            <returns>Uma lista de clientes</returns>
+        </member>
+        <member name="M:Custo0.Interfaces.IClienteRepository.Cadastrar(Custo0.Domains.Cliente)">
+            <summary>
+            Cadastra um novo cliente
+            </summary>
+            <param name="novoCliente">Objeto novoCliente que será cadastrado</param>
+        </member>
+        <member name="M:Custo0.Interfaces.IClienteRepository.Atualizar(System.Int32,Custo0.Domains.Cliente)">
+            <summary>
+            Atualiza um cliente existente
+            </summary>
+            <param name="id">ID do cliente que será atualizado</param>
+            <param name="clienteAtualizado">Objeto com as novas informações</param>
+        </member>
+        <member name="M:Custo0.Interfaces.IClienteRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta um cliente existente
+            </summary>
+            <param name="id">ID do cliente que será deletado</param>
+        </member>
+        <member name="M:Custo0.Interfaces.IClienteRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca um cliente através do ID
+            </summary>
+            <param name="id">ID do cliente que será buscado</param>
+            <returns>Um cliente buscado</returns>
+        </member>
+        <member name="M:Custo0.Interfaces.IEmpresaRepository.Listar">
+            <summary>
+            Lista todos as empresas
+            </summary>
+            <returns>Uma lista de empresas</returns>
+        </member>
+        <member name="M:Custo0.Interfaces.IEmpresaRepository.Cadastrar(Custo0.Domains.Empresa)">
+            <summary>
+            Cadastra uma nova empresa
+            </summary>
+            <param name="novaEmpresa">Objeto novaEmpresa que será cadastrado</param>
+        </member>
+        <member name="M:Custo0.Interfaces.IEmpresaRepository.Atualizar(System.Int32,Custo0.Domains.Empresa)">
+            <summary>
+            Atualiza uma empresa existente
+            </summary>
+            <param name="id">ID da empresa que será atualizado</param>
+            <param name="empresaAtualizado">Objeto com as novas informações</param>
+        </member>
+        <member name="M:Custo0.Interfaces.IEmpresaRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta um empresa existente
+            </summary>
+            <param name="id">ID da empresa que será deletada</param>
+        </member>
+        <member name="M:Custo0.Interfaces.IEmpresaRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca um empresa através do ID
+            </summary>
+            <param name="id">ID da empresa que será buscada</param>
+            <returns>Uma empresa buscada</returns>
+        </member>
+        <member name="M:Custo0.Interfaces.IProdutoRepository.Listar">
+            <summary>
+            Lista todos os produtos
+            </summary>
+            <returns>Uma lista de produtos</returns>
+        </member>
+        <member name="M:Custo0.Interfaces.IProdutoRepository.ListarInstituicao(System.Int32)">
+            <summary>
+            Lista todos os produtos da empresa
+            </summary>
+            <returns>Uma lista de produtos</returns>
+        </member>
+        <member name="M:Custo0.Interfaces.IProdutoRepository.ListarCategoria(System.Int32)">
+            <summary>
+            Lista todos os produtos da determinada categoria
+            </summary>
+            <returns>Uma lista de produtos</returns>
+        </member>
+        <member name="M:Custo0.Interfaces.IProdutoRepository.Cadastrar(Custo0.Domains.Produto)">
+            <summary>
+            Cadastra um novo produto
+            </summary>
+            <param name="novoProduto">Objeto novoProduto que será cadastrado</param>
+        </member>
+        <member name="M:Custo0.Interfaces.IProdutoRepository.Atualizar(System.Int32,Custo0.Domains.Produto)">
+            <summary>
+            Atualiza um produto existente
+            </summary>
+            <param name="id">ID do produto que será atualizado</param>
+            <param name="produtoAtualizado">Objeto com as novas informações</param>
+        </member>
+        <member name="M:Custo0.Interfaces.IProdutoRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta um produto existente
+            </summary>
+            <param name="id">ID do produto que será deletado</param>
+        </member>
+        <member name="M:Custo0.Interfaces.IProdutoRepository.BuscarPorId(System.Nullable{System.Int32})">
+            <summary>
+            Busca um produto através do ID
+            </summary>
+            <param name="id">ID do produto que será buscado</param>
+            <returns>Um produto buscado</returns>
+        </member>
+        <member name="M:Custo0.Interfaces.IReservaRepository.Listar">
+            <summary>
+            Lista todos as reservas
+            </summary>
+            <returns>Uma lista de reservas</returns>
+        </member>
+        <member name="M:Custo0.Interfaces.IReservaRepository.ListarCliente(System.Int32)">
+            <summary>
+            Lista todos as reservas do cliente
+            </summary>
+            <param name="idCliente">ID do cliente</param>
+            <returns>Uma lista de reservas</returns>
+        </member>
+        <member name="M:Custo0.Interfaces.IReservaRepository.ListarEmpresa(System.Int32)">
+            <summary>
+            Lista todos as reservas da instituição
+            </summary>
+            <param name="idEmpresa">ID da empresa</param>
+            <returns>Uma lista de reservas</returns>
+        </member>
+        <member name="M:Custo0.Interfaces.IReservaRepository.ListarPendentes(System.Int32)">
+            <summary>
+            Lista todos as reservas da instituição que precisam de aprovação
+            </summary>
+            <param name="idEmpresa">ID da empresa</param>
+            <returns>Uma lista de reservas</returns>
+        </member>
+        <member name="M:Custo0.Interfaces.IReservaRepository.Criar(Custo0.Domains.Reserva)">
+            <summary>
+            Cadastra uma nova reserva
+            </summary>
+            <param name="novaReserva">Objeto novaReserva que será cadastrado</param>
+        </member>
+        <member name="M:Custo0.Interfaces.IReservaRepository.Editar(System.Int32,Custo0.Domains.Reserva)">
+            <summary>
+            Atualiza uma reserva existente
+            </summary>
+            <param name="id">ID da reserva que será atualizado</param>
+            <param name="reservaAtualizado">Objeto com as novas informações</param>
+        </member>
+        <member name="M:Custo0.Interfaces.IReservaRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta uma reserva existente
+            </summary>
+            <param name="id">ID da reserva que será deletada</param>
+        </member>
+        <member name="M:Custo0.Interfaces.IReservaRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca uma reserva através do ID
+            </summary>
+            <param name="id">ID da reserva que será buscada</param>
+            <returns>Uma reserva buscado</returns>
+        </member>
+        <member name="M:Custo0.Interfaces.IUsuarioRepository.Login(System.String,System.String)">
+            <summary>
+            Valida o usuário
+            </summary>
+            <param name="email">E-mail do usuário</param>
+            <param name="senha">Senha do usuário</param>
+            <returns>Um objeto do tipo Usuario que foi encontrado</returns>
+        </member>
+        <member name="M:Custo0.Interfaces.IUsuarioRepository.Listar">
+            <summary>
+            Lista todos os usuários
+            </summary>
+            <returns>Uma lista de usuários</returns>
+        </member>
+        <member name="M:Custo0.Interfaces.IUsuarioRepository.Cadastrar(Custo0.Domains.Usuario)">
+            <summary>
+            Cadastra um novo usuário
+            </summary>
+            <param name="novoUsuario">Objeto novoUsuario que será cadastrado</param>
+        </member>
+        <member name="M:Custo0.Interfaces.IUsuarioRepository.Atualizar(System.Int32,Custo0.Domains.Usuario)">
+            <summary>
+            Atualiza um usuário existente
+            </summary>
+            <param name="id">ID do usuário que será atualizado</param>
+            <param name="usuarioAtualizado">Objeto com as novas informações</param>
+        </member>
+        <member name="M:Custo0.Interfaces.IUsuarioRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta um usuário existente
+            </summary>
+            <param name="id">ID do usuário que será deletado</param>
+        </member>
+        <member name="M:Custo0.Interfaces.IUsuarioRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca um usuário através do ID
+            </summary>
+            <param name="id">ID do usuário que será buscado</param>
+            <returns>Um usuário buscado</returns>
+        </member>
+    </members>
+</doc>
