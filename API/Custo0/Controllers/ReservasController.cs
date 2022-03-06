@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Authorization;
+using Custo0.ViewModels;
 
 namespace Custo0.Controllers
 {
@@ -116,13 +117,16 @@ namespace Custo0.Controllers
         /// <param name="NovaReserva">Reserva a ser cadastrada</param>
         /// <returns>Um status code 201 - Created</returns>
         [HttpPost]
-        public IActionResult CriarReserva(Reserva NovaReserva)
+        public IActionResult CriarReserva(ReservaViewModel r)
         {
             int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
             Usuario u = _usuarioRepository.BuscarPorId(idUsuario);
-            Produto p = _produtoRepository.BuscarPorId(NovaReserva.IdProduto);
+            Produto p = _produtoRepository.BuscarPorId(r.IdProduto);
             Cliente c = _clienteRepository.BuscarPorIdUser(idUsuario);
+            Reserva NovaReserva = new();
 
+            NovaReserva.IdProduto = r.IdProduto; 
+            NovaReserva.Quantidade = r.quantidade;
             NovaReserva.IdCliente = c.IdCliente;
             NovaReserva.IdSituacao = 1;
             NovaReserva.Preco = p.Preco;
