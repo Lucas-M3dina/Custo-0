@@ -151,6 +151,12 @@
             <param name="id">ID da empresa que será buscada</param>
             <returns>Uma empresa buscada</returns>
         </member>
+        <member name="M:Custo0.Interfaces.IEstadoRepository.Listar">
+            <summary>
+            Lista todos os Estados
+            </summary>
+            <returns>Uma lista de Estados</returns>
+        </member>
         <member name="M:Custo0.Interfaces.IProdutoRepository.Listar">
             <summary>
             Lista todos os produtos
