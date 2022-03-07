@@ -3,7 +3,7 @@ import Card from "../components/Card"
 import { React, Component, useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
-
+import api from "../services/api";
 import logo from "../assets/logo.png"
 import barras from "../assets/barras.png"
 import "../components/css/Header.css"
@@ -16,7 +16,8 @@ export default function App() {
     const [campoBusca, setCampoBusca] = useState('');
 
     function salvarProdutos() {
-        axios('https://621bca48768a4e10209ca218.mockapi.io/Produto')
+        // axios('https://621bca48768a4e10209ca218.mockapi.io/Produto')
+        api.get('/produtos')
             .then(resposta => {
                 if (resposta.status === 200) {
                     console.log(resposta.data)

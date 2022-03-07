@@ -8,6 +8,7 @@ import delet from "../assets/icon-delete.svg"
 import "../css/Produto.css"
 import api from '../services/api';
 import Header from "../components/Header"
+import { parseJwt } from '../services/auth';
 
 
 export default function App() {
@@ -31,11 +32,13 @@ export default function App() {
         currency: 'BRL'
     })
 
+    var empresa
+
     function buscarProduto() {
         var url_id = window.location.pathname.split('/')[2]
         // console.log(url)        
 
-        axios(`https://621bca48768a4e10209ca218.mockapi.io/Produto/${url_id}`)
+        api.get(`/produtos/${url_id}`)
             .then(resposta => {
                 if (resposta.status === 200) {
                     // console.log(resposta.data)
@@ -50,37 +53,59 @@ export default function App() {
         api.post('/reservas', {
             quantidade: qntade,
             idProduto: produto.id
-        })
+        }, { headers: { 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login') } })
             .then((resposta) => {
                 if (resposta.status == 201) {
                     history.push('/reservas')
                 }
             })
-            .catch(erro => {console.log(erro)})
+            .catch(erro => { console.log(erro) })
+    }
+
+    function postarDoacao(event) {
+        event.preventDefault()
+        api.post('/reservas/doacao', {
+            quantidade: qntade,
+            idProduto: produto.id
+        }, { headers: { 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login') } })
+            .then((resposta) => {
+                if (resposta.status == 201) {
+                    history.push('/reservas')
+                }
+            })
+            .catch(erro => { console.log(erro) })
     }
 
     function editarProduto(event) {
         event.preventDefault()
-        api.put(`produtos/${produto.idProduto}`, {
-            idProduto: produto.idProduto,
-            idTipoProduto: tipo,
-            idEmpresa: produto.idEmpresa,
-            preco: preco,
-            quantidade: estoque,
-            titulo: titulo,
-            descricao: descricao,
-            imagemProduto: img,
-            dataValidade: produto.dataValidade
-        })
+
+        var pAtualizado = produto
+
+        pAtualizado.idTipoProduto = tipo
+        pAtualizado.preco = preco
+        pAtualizado.quantidade = estoque
+        pAtualizado.titulo = titulo
+        pAtualizado.descricao = descricao
+
+
+        api.put(`/produtos/${produto.idProduto}`, pAtualizado, { headers: { 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login') } })
             .then((resposta) => {
-                if (resposta.status == 201) {
-                    history.reload()
+                if (resposta.status == 204) {
+                    fecharForm()
+                } else {
+                    setErroMessage("Erro. Informações inválidas.")
                 }
-                setErroMessage("Erro. Informações inválidas.")
-                formEditar()
 
             })
-            .catch(setErroMessage("Erro. Tente novamente mais tarde."))
+            .catch(erro => {
+                console.log(erro)
+                setErroMessage("Erro. Tente novamente mais tarde.")
+            })
+    }
+
+    function excluirProduto() {
+        api.delete(produto.idProduto, { headers: { 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login') } })
+        history.push('/produtos')
     }
 
     function onChange(event) {
@@ -88,12 +113,18 @@ export default function App() {
     }
 
     function productTools() {
-        return (
-            <div className='produto-functions'>
-                <img id="edit" onClick={abrirForm} src={edit} alt="Editar" />
-                <img src={delet} alt="Deletar" />
-            </div>
-        )
+        if (empresa != null) {
+
+            if (empresa.idEmpresa == produto.idEmpresa) {
+                return (
+                    <div className='produto-functions'>
+                        <img id="edit" onClick={abrirForm} src={edit} alt="Editar" />
+                        <img src={delet} onClick={excluirProduto} alt="Deletar" />
+                    </div>
+                )
+            }
+        }
+        return null
     }
 
     function formEditar() {
@@ -176,6 +207,14 @@ export default function App() {
                         <img src={carrinho} alt="Adicionar" />
                         Adicionar
                     </button>
+                    {
+                        parseJwt().role == 3 ?
+                            <button onClick={postarDoacao} id='doa'>
+                                Pedir doação
+                            </button>
+
+                            : null
+                    }
                 </form>
 
                 <div className='info-produto'>
@@ -216,13 +255,23 @@ export default function App() {
         event.stopPropagation();
     }
 
-    useEffect(buscarProduto, []);
+    function findIdEmpresa() {
+        if (parseJwt().role == '1') {
+            api.get('/empresas/user/' + parseJwt().jti)
+                .then(r => empresa = r.data)
+        }
+    }
+
+    useEffect(
+        buscarProduto,
+        []
+    );
 
     return (
         <div>
             <Header></Header>
             {
-                produto.id != null ?
+                produto.idProduto != null ?
                     telaProduto() :
                     <p>Não encontrado.</p>
             }
