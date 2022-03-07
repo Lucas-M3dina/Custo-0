@@ -85,7 +85,7 @@ namespace Custo0
 
             app.UseSwagger();
             app.UseSwaggerUI(c => {
-                c.SwaggerEndpoint("/v1/swagger.json", "Custo0.webAPI");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Custo0.webAPI");
                 c.RoutePrefix = string.Empty;
             });
 
