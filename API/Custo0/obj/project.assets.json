@@ -7851,11 +7851,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\Custo-0\\API\\Custo0\\Custo0.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Downloads\\Custo-0\\API\\Custo0\\Custo0.csproj",
       "projectName": "Custo0",
-      "projectPath": "C:\\Users\\User\\Desktop\\Custo-0\\API\\Custo0\\Custo0.csproj",
+      "projectPath": "C:\\Users\\User\\Downloads\\Custo-0\\API\\Custo0\\Custo0.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\Custo-0\\API\\Custo0\\obj\\",
+      "outputPath": "C:\\Users\\User\\Downloads\\Custo-0\\API\\Custo0\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

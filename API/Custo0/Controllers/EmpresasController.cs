@@ -48,6 +48,19 @@ namespace Custo0.Controllers
             }
         }
 
+        [HttpGet("user/{Id}")]
+        public IActionResult GetByIdUser(int Id)
+        {
+            try
+            {
+                return Ok(_empresaRepository.BuscarPorIdUser(Id));
+            }
+            catch (Exception Erro)
+            {
+                return BadRequest(Erro);
+            }
+        }
+
         [HttpPost]
         public IActionResult Post(Empresa NovaEmpresa)
         {
