@@ -82,8 +82,17 @@ namespace Custo0.Controllers
         {
             try
             {
-                _produtoRepository.Deletar(Id);
-                return StatusCode(204);
+                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+
+                Empresa e = _empresaRepository.BuscarPorIdUser(idUsuario);
+
+                if (Id == e.IdEmpresa)
+                {
+                    _produtoRepository.Deletar(Id);
+                    return StatusCode(204);
+                }
+                return StatusCode(400);
+
             }
             catch (Exception Erro)
             {
