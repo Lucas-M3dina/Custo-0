@@ -24,7 +24,7 @@ export default class Card extends Component {
                         // <img src={`data:image;base64,${p.imagemProduto}`} alt="Imagem produto" /> :
 
                         /// formato mock
-                        <img src={p.imagemProduto} alt="Imagem produto" /> :
+                        <img src={p.imagemProduto} className='card_article_img' alt="Imagem produto" /> :
 
                         <img src={nullProduct} alt="Imagem produto" />
                 }

@@ -48,6 +48,11 @@
     overflow: hidden;
 }
 
+.card_article_img {
+    width: 150px;
+    object-fit: cover;
+}
+
 .card-article p {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;

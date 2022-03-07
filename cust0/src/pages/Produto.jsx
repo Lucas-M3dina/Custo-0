@@ -113,9 +113,9 @@ export default function App() {
     }
 
     function productTools() {
-        if (empresa != null) {
+        // if (empresa != null) {
 
-            if (empresa.idEmpresa == produto.idEmpresa) {
+            if (parseJwt().role === '1') {
                 return (
                     <div className='produto-functions'>
                         <img id="edit" onClick={abrirForm} src={edit} alt="Editar" />
@@ -123,7 +123,7 @@ export default function App() {
                     </div>
                 )
             }
-        }
+        // }
         return null
     }
 

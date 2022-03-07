@@ -63,7 +63,7 @@ export default function App() {
                 </Link>
             </header>
             <div className="container-login">
-                <h1 className="titulo-login">Alimentos</h1>
+                <h1 className="titulo-login">Produtos</h1>
                 <section className="section-login">
                     {
                         listarProdutos()
