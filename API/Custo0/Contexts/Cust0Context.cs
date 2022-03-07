@@ -34,10 +34,10 @@ namespace Custo0.Contexts
             if (!optionsBuilder.IsConfigured)
             {
                 // Gustavo:
-                // optionsBuilder.UseSqlServer("Data Source=DESKTOP-9T98V6J\\SQLEXPRESS; initial catalog=custo; user Id=sa; pwd=Senai@132;");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-9T98V6J\\SQLEXPRESS; initial catalog=custo; user Id=sa; pwd=Senai@132;");
 
                 // Medina
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-0BA1Q0M\\SQLEXPRESS; initial catalog=custo; user Id=sa; pwd=Senai@132;");
+                // optionsBuilder.UseSqlServer("Data Source=DESKTOP-0BA1Q0M\\SQLEXPRESS; initial catalog=custo; user Id=sa; pwd=Senai@132;");
                 
             }
         }

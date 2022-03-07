@@ -72,6 +72,11 @@
     margin-bottom: 50px;
 }
 
+.cdst_btn_form_change:active {
+    border: 2px solid black;
+    background: #c9ca66;
+}
+
 .cdst_btn_form_change:hover{
     cursor: pointer;
     background: #c9ca66;
