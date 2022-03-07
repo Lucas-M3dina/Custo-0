@@ -7,23 +7,73 @@ import api from "../services/api";
 import '../css/Reset.css'
 import '../css/Reservas.css'
 import ReservaCard from "../components/ReservaCard";
+import {parseJwt} from '../services/auth'
 
 export default function Reservas() {
     const [idReserva, setIdReserva] = useState(0);
     const [reservas, setReservas] = useState([]);
 
-    const buscarReservas = () => {
-        api.get('https://6220a847afd560ea6998ddcb.mockapi.io/reserva')
+    const buscarTodasReservar = () => {
+        api.get('/reservas')
         .then(resp => {
             if (resp.status === 200) {
-                console.log(resp.data)
                 setReservas(resp.data)
             }
+        }).catch(erro => {
+            console.log(erro)
+        })
+    }
+
+    const buscarReservasCliente = () => {
+        api.get('/Reservas/cliente', {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
+        .then(resp => {
+            if (resp.status === 200) {
+                setReservas(resp.data)
+            }
+        }).catch(erro => {
+            console.log(erro)
+        })
+    }
+
+    const buscarReservasEmpresa = () => {
+        api.get('/Reservas/empresa', {
+            headers: {
+                'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
+        .then(resp => {
+            if (resp.status === 200) {
+                setReservas(resp.data)
+            }
+        }).catch(erro => {
+            console.log(erro)
         })
     }
 
     useEffect(() => {
-        buscarReservas()
+        switch (parseJwt().role) {
+            // Empresa
+            case '1':
+                buscarReservasEmpresa()
+                break;
+            
+            // Ong
+            case '2':
+                buscarReservasCliente()
+                break;
+
+            // Cliente
+            case '3':
+                buscarReservasCliente()
+                break;
+        
+            default:
+                break;
+        }
     }, [])
 
     return (
@@ -35,7 +85,7 @@ export default function Reservas() {
 
                 {reservas.map(reserva => {
                     return (
-                        <ReservaCard img={reserva.imagem} preco={reserva.preco} qntd={reserva.quantidade} />
+                        <ReservaCard reserva={reserva} />
                     )
                 })}
             </div>

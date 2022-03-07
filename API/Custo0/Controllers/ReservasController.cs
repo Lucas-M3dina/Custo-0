@@ -83,7 +83,7 @@ namespace Custo0.Controllers
         {
             try
             {
-                int idUsuario = Convert.ToInt32(HttpContext.User.FindFirstValue("JwtRegisteredClaimNames.Jti"));  
+                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
 
                 Empresa e = _empresaRepository.BuscarPorIdUser(idUsuario);
 
@@ -160,11 +160,11 @@ namespace Custo0.Controllers
         }
 
         [HttpPut("{Id}")]
-        public IActionResult Put(int Id, Reserva ReservaAtualizado)
+        public IActionResult Put(int Id, byte? idSituacao)
         {
             try
             {
-                _reservaRepository.Editar(Id, ReservaAtualizado);
+                _reservaRepository.Editar(Id, idSituacao);
                 return StatusCode(204);
             }
             catch (Exception Erro)

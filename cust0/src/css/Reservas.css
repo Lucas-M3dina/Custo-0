@@ -5,6 +5,10 @@
     width: 80%;
     margin: 0 auto;
 }
+ 
+.none {
+    display: none;
+}
 
 .rsv_title {
     font-family: Roboto;
@@ -35,21 +39,10 @@
     font-size: 38px;
     line-height: 56px;
 
+    width: 150px;
+    text-align: center;
+
     color: #1E3469;
-}
-
-.rsv_btn_shop {
-    background: #000000;
-    border-radius: 13px;
-
-    width: 100px;
-    height: 30px;
-
-    color: white;
-}
-
-.rsv_btn_shop:hover {
-    cursor: pointer;
 }
 
 .rsv_container_img {
@@ -71,6 +64,42 @@
 
     height: 50px;
     width: 60px
+}
+
+.rsv_btn_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.rsv_btn_shop {
+    background: #000000;
+    border-radius: 13px;
+
+    width: 100px;
+    height: 30px;
+
+    color: white;
+}
+
+.rsv_btn_shop:hover {
+    cursor: pointer;
+}
+
+.rsv_btn_accept {
+    border-radius: 13px;
+
+    width: 100px;
+    height: 30px;
+    margin-top: 5px;
+}
+
+.rsv_btn_intern {
+    display: flex;
+    flex-direction: column;
+}
+
+.rsv_btn_accept:hover {
+    cursor: pointer;
 }
 
 @media (max-width: 750px) {

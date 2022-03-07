@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Custo0.Controllers
 {
@@ -91,6 +92,7 @@ namespace Custo0.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut("{Id}")]
         public IActionResult Put(int Id, Produto ProdutoAtualizado)
         {

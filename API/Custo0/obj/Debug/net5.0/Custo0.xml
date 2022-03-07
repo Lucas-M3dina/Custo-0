@@ -234,12 +234,12 @@
             </summary>
             <param name="novaReserva">Objeto novaReserva que será cadastrado</param>
         </member>
-        <member name="M:Custo0.Interfaces.IReservaRepository.Editar(System.Int32,Custo0.Domains.Reserva)">
+        <member name="M:Custo0.Interfaces.IReservaRepository.Editar(System.Int32,System.Nullable{System.Byte})">
             <summary>
-            Atualiza uma reserva existente
+            Atualiza a situavao de uma reserva
             </summary>
-            <param name="id">ID da reserva que será atualizado</param>
-            <param name="reservaAtualizado">Objeto com as novas informações</param>
+            <param name="id">Id da suituação a ser atualizada</param>
+            <param name="idSituacao">Nova situação da reserva</param>
         </member>
         <member name="M:Custo0.Interfaces.IReservaRepository.Deletar(System.Int32)">
             <summary>

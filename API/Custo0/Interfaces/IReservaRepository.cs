@@ -42,11 +42,11 @@ namespace Custo0.Interfaces
         void Criar(Reserva novaReserva);
 
         /// <summary>
-        /// Atualiza uma reserva existente
+        /// Atualiza a situavao de uma reserva
         /// </summary>
-        /// <param name="id">ID da reserva que será atualizado</param>
-        /// <param name="reservaAtualizado">Objeto com as novas informações</param>
-        void Editar(int id, Reserva reservaAtualizado);
+        /// <param name="id">Id da suituação a ser atualizada</param>
+        /// <param name="idSituacao">Nova situação da reserva</param>
+        void Editar(int id, byte? idSituacao);
 
         /// <summary>
         /// Deleta uma reserva existente

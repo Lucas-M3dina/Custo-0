@@ -20,7 +20,7 @@ namespace Custo0.Repositories
 
         public void Criar(Reserva novaReserva)
         {
-            
+
 
 
             ctx.Reservas.Add(novaReserva);
@@ -36,13 +36,13 @@ namespace Custo0.Repositories
             ctx.SaveChanges();
         }
 
-        public void Editar(int id, Reserva reservaAtualizado)
+        public void Editar(int id, byte? idSituacao)
         {
             Reserva reservaBuscado = BuscarPorId(id);
 
-            if (reservaAtualizado.IdSituacao != null)
+            if (idSituacao != null)
             {
-                reservaBuscado.IdSituacao = reservaAtualizado.IdSituacao;
+                reservaBuscado.IdSituacao = idSituacao;
             }
 
             ctx.Reservas.Update(reservaBuscado);
@@ -52,22 +52,23 @@ namespace Custo0.Repositories
 
         public List<Reserva> Listar()
         {
-            return ctx.Reservas.Include(C => C.IdClienteNavigation).Include(C => C.IdEmpresaNavigation).Include(C => C.IdProdutoNavigation).ToList();
+            return ctx.Reservas.Include(C => C.IdClienteNavigation).Include(C => C.IdEmpresaNavigation).Include(C => C.IdProdutoNavigation).Include(C => C.IdSituacaoNavigation).ToList();
         }
 
         public List<Reserva> ListarCliente(int idCliente)
         {
-            return ctx.Reservas.Include(C => C.IdClienteNavigation).Include(C => C.IdEmpresaNavigation).Include(C => C.IdProdutoNavigation).Where(c => c.IdCliente == idCliente).ToList();
+            return ctx.Reservas.Include(C => C.IdClienteNavigation).Include(C => C.IdEmpresaNavigation).Include(C => C.IdProdutoNavigation).Include(C => C.IdSituacaoNavigation).Where(c => c.IdCliente == idCliente).ToList();
         }
 
         public List<Reserva> ListarEmpresa(int idEmpresa)
         {
-            return ctx.Reservas.Include(C => C.IdClienteNavigation).Include(C => C.IdEmpresaNavigation).Include(C => C.IdProdutoNavigation).Where(c => c.IdEmpresa == idEmpresa).ToList();
+            return ctx.Reservas.Include(C => C.IdClienteNavigation).Include(C => C.IdEmpresaNavigation).Include(C => C.IdProdutoNavigation).Include(C => C.IdSituacaoNavigation).Where(c => c.IdEmpresa == idEmpresa).ToList();
         }
 
         public List<Reserva> ListarPendentes(int idEmpresa)
         {
-            return ctx.Reservas.Include(C => C.IdClienteNavigation).Include(C => C.IdEmpresaNavigation).Include(C => C.IdProdutoNavigation).Where(c => c.IdEmpresa == idEmpresa && c.IdSituacao == 1).ToList();
+            return ctx.Reservas.Include(C => C.IdClienteNavigation).Include(C => C.IdEmpresaNavigation).Include(C => C.IdProdutoNavigation).Include(C => C.IdSituacaoNavigation).Where(c => c.IdEmpresa == idEmpresa && c.IdSituacao == 1).ToList();
+
         }
     }
 }
